@@ -4,15 +4,9 @@ A curated collection of Ansible notes, automation concepts, and project reposito
 ## Notes
 <details>
   <summary>Introduction to Ansible</summary>
-  ## What is Ansible?
-
-
-Ansible is an open-source IT automation and configuration management tool that enables you to automate repetitive tasks across servers, cloud resources, containers, and network devices.
-
-
-Common use cases include:
-
-
+   ##What is Ansible?
+  Ansible is an open-source IT automation and configuration management tool that enables you to automate repetitive tasks across servers, cloud resources, containers, and network devices.
+  Common use cases include:
 - Server provisioning
 - Application deployment
 - Configuration management
@@ -20,11 +14,7 @@ Common use cases include:
 - Security patching
 - System maintenance
 - Infrastructure orchestration
-
-
 ---
-
-
 ## Why Use Ansible?
 
 
