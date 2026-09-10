@@ -96,6 +96,7 @@ Example:
 ansible-playbook -i 54.123.45.67, playbook.yml
 ```
 This allows Ansible to target newly created infrastructure without maintaining a hosts file.
+
 ---
 
 
