@@ -107,4 +107,22 @@ A common issue occurs when:
 To avoid connection failures, add a waiting play.
 
 Example:
+```
+---
+- name: Wait for SSH Connection
+  hosts: all
+  gather_facts: false
 
+  tasks:
+    - name: Ensure SSH port is available
+      wait_for:
+        port: 22
+        delay: 15
+        timeout: 300
+        search_regex: OpenSSH
+        host: "{{ (ansible_ssh_host | default(ansible_host)) | default(inventory_hostname) }}"
+      delegate_to: localhost
+
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
+```
