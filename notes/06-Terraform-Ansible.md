@@ -278,3 +278,26 @@ when inventory is supplied dynamically.
 
 ### Prefer terraform_data
 Avoid embedding complex provisioning logic directly inside infrastructure resources.
+
+---
+## Key Terms to Remember
+Term	DescriptionTerraform	Infrastructure provisioning tool
+Ansible	Configuration management and automation tool
+local-exec	Terraform provisioner that runs local commands
+terraform_data	Resource used to trigger automation actions
+Dynamic Inventory	Inventory generated automatically at runtime
+wait_for	Ansible module used to wait for conditions
+delegate_to	Runs a task on another host such as localhost
+Provisioner	Terraform mechanism for executing scripts or commands
+
+## Beginner Learning Checklist
+* Understand the differences between Terraform and Ansible
+* Provision an EC2 instance with Terraform
+* Execute Ansible using local-exec
+* Use dynamic inventory with public IP addresses
+* Implement SSH wait checks
+* Use terraform_data for cleaner automation
+* Deploy an application automatically after provisioning
+* Build a fully automated infrastructure pipeline
+
+
