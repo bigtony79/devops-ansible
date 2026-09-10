@@ -16,11 +16,8 @@ A curated collection of Ansible notes, automation concepts, and project reposito
 - System maintenance
 - Infrastructure orchestration
 ---
-## Why Use Ansible?
-
-### Benefits
-
-
+### Why Use Ansible?
+#### Benefits
 - Automates repetitive administrative tasks
 - Reduces manual effort and human errors
 - Executes tasks from a central control machine
@@ -29,14 +26,8 @@ A curated collection of Ansible notes, automation concepts, and project reposito
 - Allows the same automation code to be reused across environments
 - Provides consistent and repeatable deployments
 - Scaling automation is easier than managing systems manually
-
-
 ### Common Tasks
-
-
 Examples of tasks that can be automated:
-
-
 - Operating system upgrades
 - Server reboots
 - Backup jobs
@@ -45,96 +36,52 @@ Examples of tasks that can be automated:
 - Application deployment
 - Docker container management
 - Service monitoring and maintenance
-
-
 ---
-
-
-## Supported Infrastructure
-
-
+### Supported Infrastructure
 Ansible can manage virtually any infrastructure:
-
-
 - Physical (bare-metal) servers
 - Virtual machines
 - Public cloud environments (AWS, Azure, GCP)
 - Private clouds
 - Containers
 - Network devices
-
-
 ---
 
-
-## Agentless Architecture
-
-
+### Agentless Architecture
 One of Ansible's biggest advantages is that it is **agentless**.
-
-
 Unlike some automation tools, Ansible does not require special software (agents) to be installed on managed hosts.
-
-
-### Benefits
-
-
+#### Benefits
 - Easy setup
 - Lower maintenance overhead
 - No agent upgrades
 - Fewer security concerns
 - Reduced system resource consumption
-
-
-### Communication Methods
-
-
+#### Communication Methods
 - Linux/Unix: SSH
 - Windows: WinRM
-
-
 ---
-
-
-# Ansible Components
-
-
-## Modules
-
-
+### Ansible Components
+#### Modules
 Modules are small programs that perform specific tasks on target systems.
-
-
 Examples:
-
-
 - Copy a file
 - Install Nginx
 - Create a user
 - Start a Docker container
 - Install packages
 
-
-### How Modules Work
-
-
+#### How Modules Work
 1. Ansible connects to the target host.
 2. The module is temporarily transferred.
 3. The module executes its task.
 4. The module returns results.
 5. The temporary module is removed.
 
-
-### What is Idempotency?
-
-
+##### What is Idempotency?
 Ansible modules are typically **idempotent**, meaning you can run them multiple times without causing unintended changes.
-
-
 ---
 
-
-## YAML
+### YAML
 
 
 Ansible configurations are written using **YAML (YAML Ain't Markup Language).**
