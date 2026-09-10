@@ -77,7 +77,7 @@ Examples:
 4. The module returns results.
 5. The temporary module is removed.
 
-#### What is Idempotency?
+### What is Idempotency?
 Ansible modules are typically **idempotent**, meaning you can run them multiple times without causing unintended changes.
 ---
 
