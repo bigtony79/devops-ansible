@@ -7,3 +7,5 @@ A curated collection of Ansible notes, automation concepts, and project reposito
 3. [Modules and Collections](notes/03-Modules-Collections.md)
 4. [Ansible Variables](notes/04-Ansible-Variables.md)
 5. [Ansible Default Inventory and Configuration File](notes/05-Ansible-Configuration-Default-Inventory.md)
+6. [Ansible and Terraform](notes/06-Terraform-Ansible.md)
+7. [Dynamic Inventory](notes/07-Dynamic-Inventory.md)
