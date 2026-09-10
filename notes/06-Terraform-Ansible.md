@@ -250,3 +250,31 @@ Deploy Application
 ↓
 Verify Service
 ```
+---
+## Best Practices
+### Use Terraform for Infrastructure
+Examples:
+* EC2
+* VPC
+* Security Groups
+* Networking
+
+### Use Ansible for Configuration
+Examples:
+* Docker installation
+* Application deployment
+* User management
+* Service configuration
+
+### Add SSH Wait Checks
+Always verify SSH availability before configuration tasks.
+
+### Keep Playbooks Generic
+Use:
+```
+  hosts:all
+```
+when inventory is supplied dynamically.
+
+### Prefer terraform_data
+Avoid embedding complex provisioning logic directly inside infrastructure resources.
