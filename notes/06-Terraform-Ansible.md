@@ -135,26 +135,25 @@ The wait_for module:
 * Ensures remaining plays execute successfully
 
 #### Parameters
-*port* 
+**port**
 ```
 port: 22
 ```
-
 SSH port.
 
-delay
+**delay**
 ```
 delay: 15
 ```
 Wait 15 seconds before starting checks.
 
-timeout
+**timeout**
 ```
 timeout: 300
 ```
 Stop checking after 5 minutes.
 
-delegate_to
+**delegate_to**
 ```
 delegate_to: localhost
 ```
