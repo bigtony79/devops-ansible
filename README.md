@@ -3,6 +3,6 @@ A curated collection of Ansible notes, automation concepts, and project reposito
 
 ## Notes
 <details>
-  <summary></summary>
+  <summary>Introduction to Ansible</summary>
   
 </details>
