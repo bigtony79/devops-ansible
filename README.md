@@ -131,7 +131,7 @@ Variables make playbooks reusable and easier to maintain.
 ### Inventory
 An inventory defines the hosts managed by Ansible.
 
-### Hosts Can Be
+#### Hosts Can Be
 - Physical servers
 - Virtual machines
 - Cloud instances
