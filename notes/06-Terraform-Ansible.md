@@ -281,7 +281,9 @@ Avoid embedding complex provisioning logic directly inside infrastructure resour
 
 ---
 ## Key Terms to Remember
-Term	DescriptionTerraform	Infrastructure provisioning tool
+| Term | Description |
+|------|-------------|
+| Terraform |	Infrastructure provisioning tool |
 Ansible	Configuration management and automation tool
 local-exec	Terraform provisioner that runs local commands
 terraform_data	Resource used to trigger automation actions
