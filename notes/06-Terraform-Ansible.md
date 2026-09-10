@@ -177,4 +177,5 @@ Benefits:
 * Works with Terraform-generated hosts
 * Supports dynamic provisioning
 * No inventory maintenance required
+---
 
