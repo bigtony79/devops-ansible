@@ -228,3 +228,25 @@ Can trigger:
 ***Better Maintainability***
 
 Reduces coupling between Terraform resources and external automation.
+
+---
+## Terraform to Ansible Automation Flow
+```
+Terraform Apply
+↓
+Create EC2 Instance
+↓
+Assign Public IP
+↓
+terraform_data Trigger Fires
+↓
+Ansible Playbook Starts
+↓
+Wait for SSH
+↓
+Install Docker
+↓
+Deploy Application
+↓
+Verify Service
+```
