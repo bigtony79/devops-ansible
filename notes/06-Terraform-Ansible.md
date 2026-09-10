@@ -202,6 +202,7 @@ resource "terraform_data" "ansible_run" {
 ### Why Use terraform_data?
 
 **Separation of Concerns** 
+
 ***Infrastructure:*** 
 ```
     aws_instance
@@ -213,9 +214,11 @@ resource "terraform_data" "ansible_run" {
 ```
 
 ***Cleaner Code:*** 
+
 Keeps provisioning logic separate from configuration management logic.
 
 ***Reusable*** 
+
 Can trigger:
 * Ansible playbooks
 * Scripts
@@ -223,4 +226,5 @@ Can trigger:
 * Post-deployment automation
 
 ***Better Maintainability***
+
 Reduces coupling between Terraform resources and external automation.
