@@ -79,3 +79,23 @@ When Terraform creates the EC2 instance:
 4. The public IP becomes a temporary inventory source.
 ---
 
+## Using Dynamic Inventory
+
+Notice the inventory parameter:
+
+Shell
+```
+-i ${self.public_ip},
+```
+
+The trailing comma tells Ansible:
+* Treat this value as a host inventory instead of an inventory file.
+
+Example:
+```
+ansible-playbook -i 54.123.45.67, playbook.yml
+```
+This allows Ansible to target newly created infrastructure without maintaining a hosts file.
+---
+
+
