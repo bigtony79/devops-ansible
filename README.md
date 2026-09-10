@@ -77,15 +77,12 @@ Examples:
 4. The module returns results.
 5. The temporary module is removed.
 
-##### What is Idempotency?
+#### What is Idempotency?
 Ansible modules are typically **idempotent**, meaning you can run them multiple times without causing unintended changes.
 ---
 
 ### YAML
-
-
 Ansible configurations are written using **YAML (YAML Ain't Markup Language).**
-
 
 ```yaml
 name: Install Nginx
@@ -100,192 +97,113 @@ tasks:
       state: present
 ```
 
-
 ### YAML Rules
-
-
 - Indentation matters
 - Use spaces, not tabs
 - Maintain consistent formatting
 - Easy for humans to read
-
-
 ---
 
-
-# Playbooks
-
-
+### Playbooks
 A Playbook is a YAML file that defines automation tasks.
-
-
 - Modules = Individual actions
 - Playbooks = Ordered collection of actions
 
-
-### Playbook Characteristics
-
-
+#### Playbook Characteristics
 - Written in YAML
 - Can contain one or more plays
 - Defines target hosts
 - Defines tasks to run
 - Supports variables and conditions
 - Can be reused across different environments
-
-
 ---
 
 
-# Variables
-
-
+### Variables
 Variables make playbooks reusable and easier to maintain.
 
-
-### Benefits
-
-
+#### Benefits
 - Avoid repeating values
 - Environment-specific customization
 - Improved readability
-
-
 ---
 
 
-# Inventory
-
-
+### Inventory
 An inventory defines the hosts managed by Ansible.
 
-
 ### Hosts Can Be
-
-
 - Physical servers
 - Virtual machines
 - Cloud instances
 - Containers
-
-
 ---
 
-
-# Host Grouping Strategies
-
-
+### Host Grouping Strategies
 A host can belong to multiple groups simultaneously.
-
-
-### Group by Location (WHERE)
+#### Group by Location (WHERE)
 - East
 - West
-
-
-### Group by Function (WHAT)
+#### Group by Function (WHAT)
 - Web Servers
 - Database Servers
-
-
-### Group by Environment (WHEN)
+#### Group by Environment (WHEN)
 - Development
 - Testing
 - Production
-
-
 ---
 
-
-# Ansible and Docker
-
-
+### Ansible and Docker
 Common Docker tasks:
-
-
 - Pull Docker images
 - Create containers
 - Start and stop containers
 - Configure networks
 - Deploy applications
-
-
 ---
 
-
-# Ansible Tower / Automation Controller
-
-
+### Ansible Tower / Automation Controller
 Features:
-
-
 - Centralized automation management
 - RBAC (Role-Based Access Control)
 - Scheduling jobs
 - Credential management
 - Inventory management
 - Team collaboration
-
-
 ---
 
-
-# Ansible vs Puppet and Chef
-
-
+### Ansible vs Puppet and Chef
 - Ansible uses YAML
 - Puppet uses Puppet DSL
 - Chef uses Ruby DSL
 - Ansible is agentless
 - Puppet and Chef typically require agents
-
-
 ---
 
-
-# SSH Configuration
-
-
-## Add a Host to Known Hosts
-
-
+### SSH Configuration
+#### Add a Host to Known Hosts
 ```bash
 ssh-keyscan -H <SERVER_IP> >> ~/.ssh/known_hosts
 ```
-
-
-## Copy SSH Key to Managed Host
-
-
+#### Copy SSH Key to Managed Host
 ```bash
 ssh-copy-id root@<SERVER_IP>
 ```
-
-
 ---
 
-
-# Disable Host Key Checking (Not Recommended)
-
+### Disable Host Key Checking (Not Recommended)
 
 Create an `.ansible.cfg` file:
-
 
 ```ini
 [defaults]
 host_key_checking = False
 ```
 
-
 > Production environments should generally keep host key checking enabled.
-
-
 ---
 
-
-# Key Terms to Remember
-
-
+### Key Terms to Remember
 - Control Node
 - Managed Node
 - Inventory
