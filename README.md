@@ -2,4 +2,4 @@
 A curated collection of Ansible notes, automation concepts, and project repositories as I build my DevOps skills.
 
 ## Notes
-[Introduction to Ansible](notes/01-Introduction-to-Ansible.md)
+1. [Introduction to Ansible](notes/01-Introduction-to-Ansible.md)
