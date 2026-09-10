@@ -284,13 +284,13 @@ Avoid embedding complex provisioning logic directly inside infrastructure resour
 | Term | Description |
 |------|-------------|
 | Terraform |	Infrastructure provisioning tool |
-Ansible	Configuration management and automation tool
-local-exec	Terraform provisioner that runs local commands
-terraform_data	Resource used to trigger automation actions
-Dynamic Inventory	Inventory generated automatically at runtime
-wait_for	Ansible module used to wait for conditions
-delegate_to	Runs a task on another host such as localhost
-Provisioner	Terraform mechanism for executing scripts or commands
+| Ansible | Configuration management and automation tool | 
+| local-exec | Terraform provisioner that runs local commands | 
+| terraform_data | 	Resource used to trigger automation actions | 
+| Dynamic Inventory | 	Inventory generated automatically at runtime | 
+| wait_for | 	Ansible module used to wait for conditions | 
+| delegate_to | Runs a task on another host such as localhost | 
+| Provisioner | Terraform mechanism for executing scripts or commands | 
 
 ## Beginner Learning Checklist
 * Understand the differences between Terraform and Ansible
