@@ -82,8 +82,6 @@ When Terraform creates the EC2 instance:
 ## Using Dynamic Inventory
 
 Notice the inventory parameter:
-
-Shell
 ```
 -i ${self.public_ip},
 ```
