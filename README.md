@@ -76,10 +76,10 @@ Examples:
 3. The module executes its task.
 4. The module returns results.
 5. The temporary module is removed.
+---
 
 ### What is Idempotency?
 Ansible modules are typically **idempotent**, meaning you can run them multiple times without causing unintended changes.
----
 
 ### YAML
 Ansible configurations are written using **YAML (YAML Ain't Markup Language).**
@@ -117,7 +117,6 @@ A Playbook is a YAML file that defines automation tasks.
 - Supports variables and conditions
 - Can be reused across different environments
 ---
-
 
 ### Variables
 Variables make playbooks reusable and easier to maintain.
