@@ -48,3 +48,34 @@ Update Ansible inventory file
 Run Ansible playbook
 ```
 This approach works but introduces manual effort.
+
+## Fully Automating Ansible Execution
+
+Instead of manually updating inventory files, Terraform can automatically invoke Ansible after infrastructure provisioning.
+
+### Example using local-exec
+```
+resource "aws_instance" "myapp_server_one" {
+  ami = data.aws_ami.amazon_linux_image.id
+  instance_type = var.instance_type
+  subnet_id = aws_subnet.myapp-subnet.id
+  vpc_security_group_ids = [aws_security_group.myapp-sg.id]  
+  availability_zone = var.avail_zone
+  associate_public_ip_address = true
+  key_name = aws_key_pair.myapp-keypair.key_name
+  tags = {
+    Name = "${var.env_prefix}-server-1"
+  }
+  provisioner "local-exec" {
+    command = "ansible-playbook -i ${self.public_ip}, --private-key ${var.ssh_private_key_location} --user ec2-user deploy_docker_tf_hosts.yaml"
+  }
+}
+```
+### What Happens?
+When Terraform creates the EC2 instance:
+1. The EC2 instance receives a public IP.
+2. Terraform executes the local-exec provisioner.
+3. Ansible runs immediately.
+4. The public IP becomes a temporary inventory source.
+---
+
