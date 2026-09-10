@@ -126,3 +126,38 @@ Example:
       vars:
         ansible_python_interpreter: /usr/bin/python3
 ```
+### How the Wait Play Works
+
+The wait_for module:
+* Checks whether SSH is available
+* Waits for EC2 boot completion
+* Prevents connection errors
+* Ensures remaining plays execute successfully
+
+Parameters
+port
+```
+port: 22
+```
+
+SSH port.
+
+delay
+```
+delay: 15
+```
+Wait 15 seconds before starting checks.
+
+timeout
+```
+timeout: 300
+```
+Stop checking after 5 minutes.
+
+delegate_to
+```
+delegate_to: localhost
+```
+Run the check from the Ansible control node rather than the target host.
+
+---
