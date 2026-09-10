@@ -3,3 +3,4 @@ A curated collection of Ansible notes, automation concepts, and project reposito
 
 ## Notes
 1. [Introduction to Ansible](notes/01-Introduction-to-Ansible.md)
+2. [Introduction to Playbooks](notes/02-Introduction-to-Playbooks.md)
