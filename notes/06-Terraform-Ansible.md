@@ -160,3 +160,21 @@ delegate_to: localhost
 Run the check from the Ansible control node rather than the target host.
 
 ---
+
+## Updating Existing Playbooks
+
+When using Terraform-generated inventory, update playbooks so they target all hosts.
+
+Instead of:
+```
+  hosts: webservers
+```
+Use:
+```
+  hosts:all
+```
+Benefits:
+* Works with Terraform-generated hosts
+* Supports dynamic provisioning
+* No inventory maintenance required
+
