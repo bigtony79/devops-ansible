@@ -96,5 +96,15 @@ ansible-playbook -i 54.123.45.67, playbook.yml
 This allows Ansible to target newly created infrastructure without maintaining a hosts file.
 
 ---
+## Waiting for EC2 Provisioning
 
+A common issue occurs when:
+
+* Terraform finishes resource creation
+* Ansible starts immediately
+* SSH is not yet available
+
+To avoid connection failures, add a waiting play.
+
+Example:
 
