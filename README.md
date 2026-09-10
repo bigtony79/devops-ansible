@@ -212,6 +212,8 @@ host_key_checking = False
 - Role
 - Variable
 - YAML
+</details>
 
-
+<details>
+  <summary>Introduction to Playbooks</summary>
 </details>
