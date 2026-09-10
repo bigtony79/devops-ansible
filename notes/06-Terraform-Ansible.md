@@ -134,8 +134,8 @@ The wait_for module:
 * Prevents connection errors
 * Ensures remaining plays execute successfully
 
-Parameters
-port
+#### Parameters
+*port* 
 ```
 port: 22
 ```
