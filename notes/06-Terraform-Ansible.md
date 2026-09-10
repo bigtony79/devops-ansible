@@ -179,3 +179,24 @@ Benefits:
 * No inventory maintenance required
 ---
 
+## Using terraform_data
+
+A better approach is to avoid placing provisioners inside the EC2 resource.
+
+Terraform provides the terraform_data resource, which can trigger actions after other resources are created.
+
+Example:
+```
+resource "terraform_data" "ansible_run" {
+ 
+  triggers_replace = [
+  aws_instance.myapp_server_one.public_ip
+  ]
+ 
+  provisioner "local-exec" {
+    command = "ansible-playbook -i ${aws_instance.myapp_server_one.public_ip}, --private-key ${var.ssh_private_key_location} --user ec2-user deploy_docker_tf_hosts.yaml"
+  }
+}
+```
+---
+
