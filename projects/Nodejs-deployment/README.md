@@ -33,6 +33,14 @@ This lab demonstrates how to use **Ansible** to automate the provisioning and de
       YOUR_SERVER_IP ansible_user=<remote_user> ansible_ssh_private_key_file=~/.ssh/<private_key>
    ```
 4. Save the **nodejs-app-1.0.0.tgz** package in a desired directory under the Ansible control node. I saved the package under **/home/my-ansible-project/nodejs** directory.
-5. 
+5. To run playbook with hardcoded values and does not use variables
+   ```
+      ansible-playbook -i hosts deploy-node-no-vars.yaml
+   ```
+6. To run a playbook with inline parameters passed to variables using commandline
+   ```
+      ansible-playbook -i hosts deploy-node-inline-vars.yaml -e "linux_name=tony version=1.0.0 location=/home/my-ansible-project/nodejs"
+   '''
+7. 
 
        
