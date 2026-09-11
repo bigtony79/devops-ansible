@@ -1,0 +1,4 @@
+version: 1.0.0
+location: /home/my-ansible-project/nodejs
+linux_name: tony
+destination: /home/{{linux_name}}
