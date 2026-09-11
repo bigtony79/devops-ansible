@@ -32,6 +32,7 @@ This lab demonstrates how to use **Ansible** to automate the provisioning and de
    ```
       YOUR_SERVER_IP ansible_user=<remote_user> ansible_ssh_private_key_file=~/.ssh/<private_key>
    ```
-4. Save the *nodejs-app-1.0.0.tgz* package in a desired directory under the Ansible control node. I saved the package under */home/my-ansible-project/nodejs* directory.
+4. Save the **nodejs-app-1.0.0.tgz** package in a desired directory under the Ansible control node. I saved the package under **/home/my-ansible-project/nodejs** directory.
+5. 
 
        
