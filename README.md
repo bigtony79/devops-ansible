@@ -11,3 +11,4 @@ A curated collection of Ansible notes, automation concepts, and project reposito
 7. [Dynamic Inventory](notes/07-Dynamic-Inventory.md)
 
 ## Projects
+[Node.js Deployment](projects/Nodejs-deployment)
