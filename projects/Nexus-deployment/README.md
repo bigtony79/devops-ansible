@@ -24,11 +24,11 @@ Create a new Droplet with the following configuration: 
 - **OS**: Ubuntu (latest available version).
 - **Droplet Type**: Shared CPU - Basic.
 - **CPU Option**: Regular SSD.
-- **Plan**: Select a budget-friendly option such as:
-   - **1 vCPU**
-   - **1 GB RAM**
-   - **25 GB SSD**
-   - **1000 GB Transfer** 
+- **Plan**: Select an option which will support Nexus requirements:
+   - **2 vCPU**
+   - **2 GB RAM**
+   - **60 GB SSD**
+   - **3 TB Transfer** 
 
 ### 2. Configure SSH Access 
 - Generate an SSH key pair using DigitalOcean's documentation or your preferred method.
