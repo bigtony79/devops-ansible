@@ -43,10 +43,10 @@ Create a new Droplet with the following configuration:
 - **Droplet Type**: Shared CPU - Basic.
 - **CPU Option**: Regular SSD.
 - **Plan**: Select a budget-friendly option such as:
-- **1 vCPU**
-- **1 GB RAM**
-- **25 GB SSD**
-- **1000 GB Transfer**
+   - **1 vCPU**
+   - **1 GB RAM**
+   - **25 GB SSD**
+   - **1000 GB Transfer**
  
 ### 2. Configure SSH Access
  
@@ -55,6 +55,8 @@ Create a new Droplet with the following configuration:
  
 ```text
 ~/.ssh/
+
+
 2. Note the Public IP address of the Droplet
 3. In the Ansible control node, update the following entries in the hosts file with the Public IP address, private key file location in the Ansible control node and desired ansible user which will run on the remote Droplet
    ```
