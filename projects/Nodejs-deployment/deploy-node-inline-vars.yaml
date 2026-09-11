@@ -1,0 +1,91 @@
+---
+- name: Install node and npm
+  hosts: all
+  tasks:
+    - name: Update apt repo and cache
+      apt: #This is a built-in Ansible module for managing packages on Debian-based systems
+        update_cache: yes
+        cache_valid_time: 3600
+        force_apt_get: yes
+    - name: Install Node.js and npm
+      apt:
+        name: 
+          - nodejs
+          - npm
+        state: present
+
+- name : Verify Node.js and npm installation
+  hosts: all
+  tasks:
+    - name: Check Node.js version
+      command: node -v #command is a built-in Ansible module that allows you to run shell commands on the target hosts. It s used here to check the installed version of Node.js.
+      register: node_version
+    - name: Check npm version
+      command: npm -v
+      register: npm_version
+    - name: Display Node.js and npm versions
+      debug:
+        msg: "Node.js version: {{ node_version.stdout }}, npm version: {{ npm_version.stdout }}" 
+
+- name: Create new Linux user for node app
+  hosts: all
+  tasks:
+    - name: Create a new user
+      user:
+        name: "{{linux_name}}" #name is a built-in Ansible variable that allows you to define the name of the user to be created. It is used here to create a new user with the name specified in the variable."
+        state: present
+        create_home: yes
+        shell: /bin/bash
+        group: admin
+      register: user_creation_result
+    - debug:
+          msg: "User creation result: {{ user_creation_result }}"
+   
+   
+
+- name:  Deploy nodejs app
+  hosts: all
+  become: True #become is a built-in Ansible keyword that allows you to run tasks with elevated privileges. It is used here to run the tasks as the root user, which is necessary for installing packages and creating users.
+  become_user: "{{linux_name}}" #become_user is a built-in Ansible keyword that allows you to run tasks as a different user. It is used here to run the tasks as the '{{linux_name}}' user.
+  vars: #vars is a built-in Ansible keyword that allows you to define variables that can be used throughout the playbook. It is used here to define the location, version, and destination of the Node.js app.
+    #location: /home/my-ansible-project/nodejs
+    #version: 1.0.0
+    destination: /home/{{linux_name}}
+  tasks:   
+    - name: Unpack the nodejs archive
+      unarchive:
+        ##src: /home/nodeapp/app-1.0.0.tgz
+        src: "{{location}}/nodejs-app-{{version}}.tgz"
+        dest: "{{destination}}"
+        
+    - name: Install app dependencies
+      npm:
+         path: "{{destination}}/package"
+    - name: Start the nodejs app
+      command: node {{destination}}/package/app/server
+      async: yes
+      poll: 0
+    - name: Verify the nodejs app is running
+      shell: ps aux | grep node | grep -v grep #shell is a built-in Ansible module that allows you to run shell commands on the target hosts. It is used here to check if the Node.js app is running by searching for the process in the process list.
+      register: app_status #register is a built-in Ansible keyword that allows you to store the output of a task in a variable. It is used here to store the output of the previous command in the variable app_status.
+    - name: Display app status
+      debug: #debug is a built-in Ansible module that allows you to print messages to the console. It is used here to display the status of the Node.js app by printing the output of the previous command.
+        msg: "Node.js app response: {{app_status.stdout_lines}}"  #stdout_lines is a built-in Ansible variable that contains the output of a command as a list of lines. It is used here to display the output of the previous command in a more readable format.
+
+ 
+ 
+ 
+ 
+ 
+
+      
+      
+      
+       
+
+
+
+      
+      
+            
+      
