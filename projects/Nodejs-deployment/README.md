@@ -10,7 +10,7 @@ This lab demonstrates how to use **Ansible** to automate the provisioning and de
 * Linux
 
 ## Project Description
-* Create Server on DigitalOcean
+* Create Server on DigitalOcean (aka Droplet)
 * Write Ansible Playbook that installs necessary technologies, creates Linux user for an application and deploys a NodeJS application with that user
 
 ## Steps
@@ -27,4 +27,9 @@ This lab demonstrates how to use **Ansible** to automate the provisioning and de
    - Select *Public IPv4 address*
    - Set the desired quantity of droplets to 1
    - Click **Create Droplet** button
+2. Note the Public IP address of the Droplet
+3. Update the following entries in the hosts file
+   ```
+      
+
        
