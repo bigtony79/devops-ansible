@@ -35,7 +35,7 @@ Make sure that you add terraform.tvars in .gitignore file
 ### 2. Define Ansible Variables file
 Create your own ansible variable file (such as vars-file.yaml) and define the following key:value pairs:
 ```
- docker_compose_dir: DOCKER_COMPOSE_DIRECTORY
+ docker_compose_dir: TARGET_DOCKER_COMPOSE_DIRECTORY_EC2_INSTANCE
  location_source: SOURCE_DIRECTORY_ANSIBLE_CONTROL_NODE
  location_target: TARGET_DIRECTORY_EC2_INSTANCE
  docker_username: DOCKERHUB_USER_NAME
