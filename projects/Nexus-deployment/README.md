@@ -43,7 +43,7 @@ After the droplet is created, note its public IPv4 address
 ### 4. Configure the Ansible Inventory
 Update your inventory (hosts) file with the Droplet information.
 ```
-     [nodejs_server]
+     [nexus]
      YOUR_SERVER_IP ansible_user=<remote_user> ansible_ssh_private_key_file=~/.ssh/<private_key>
 ```
 **Note**: Do not commit actual server IP addresses, private keys or other sensitive information to GitHub.
