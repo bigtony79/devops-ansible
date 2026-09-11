@@ -37,7 +37,7 @@ Define terraform.tvars file before running terraform
   subnet_cidr_block = SUBNET_CIDR_BLOCK
   avail_zone = AVAIL_ZONE
   env_prefix = DESIRED_PREFIX
-  my_ip = IP_ADDRRESS 
+  my_ip = IP_ADDRESS 
   instance_type = DESIRED_INSTANCE_TYPE
   public_key_location = PUBLIC_KEY_FILE_LOCATION
   image_name = "al2023-ami-2023*"
