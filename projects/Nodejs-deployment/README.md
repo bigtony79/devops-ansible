@@ -1,32 +1,63 @@
-# Automate Node.js application Deployment
-
+# Automate Node.js Application Deployment
+ 
 ## Overview
+ 
 This lab demonstrates how to use **Ansible** to automate the provisioning and deployment of a **Node.js** application on a Linux server hosted on **DigitalOcean**. Instead of manually configuring the server, installing dependencies, creating users, and deploying application code, Ansible playbooks are used to define the entire process as code.
-
-## Technologies used
-* Ansible
-* Node.js
-* Digital Ocean (Droplet)
-* Linux
-
+ 
+The objective is to gain hands-on experience with Infrastructure as Code (IaC) and configuration management by creating a repeatable deployment process. The playbooks automate server configuration, software installation, user creation, and application deployment, ensuring a consistent and reliable environment every time.
+ 
+## Technologies Used
+ 
+- Ansible
+- Node.js
+- DigitalOcean (Droplet)
+- Linux (Ubuntu)
+- SSH
+ 
 ## Project Description
-* Create Server on DigitalOcean (aka Droplet)
-* Write Ansible Playbook that installs necessary technologies, creates Linux user for an application and deploys a NodeJS application with that user
+ 
+- Create a Linux server on DigitalOcean (Droplet)
+- Configure secure SSH access
+- Write Ansible playbooks to:
+- Install required software and dependencies
+- Create a dedicated Linux user for the application
+- Deploy a Node.js application package
+- Start the application on the target server
+- Demonstrate different methods of handling variables in Ansible:
+- Hardcoded values
+- Inline variables
+- External variables file
+ 
+## Prerequisites
+ 
+- Ansible installed on the control node
+- DigitalOcean account
+- SSH key pair
+- Node.js application package (`nodejs-app-1.0.0.tgz`)
+- Internet connectivity between the Ansible control node and the Droplet
 
 ## Steps
-1. Provision a DigitalOcean Droplet
-   - Create a Droplet
-     - **Datacenter** - Choose the closest datacenter to you
-     - **OS** - Select *Ubuntu* as the OS with the latest version.
-     - **Droplet Type** - Select *Shared CPU - Basic* option.
-     - **CPU options** - Select *Regular DiskType:SSD*
-     - **Select a Plan** -   Select a low cost option which will meet your budget. For example, you can select **1vCPU-1GB RAM-25 GB SSD -1000GB Transfer** option.
-   - Configure SSH keys for secure access
-     - You can follow the instructions provided by DigitalOcean to generate the public and private SSH keys.
-     - Save the Private Key in your ansible control node under the **user's ~/.ssh** directory
-   - Select *Public IPv4 address*
-   - Set the desired quantity of droplets to 1
-   - Click **Create Droplet** button
+### 1. Provision a DigitalOcean Droplet
+ 
+Create a new Droplet with the following configuration:
+ 
+- **Datacenter**: Choose the closest datacenter to your location.
+- **OS**: Ubuntu (latest available version).
+- **Droplet Type**: Shared CPU - Basic.
+- **CPU Option**: Regular SSD.
+- **Plan**: Select a budget-friendly option such as:
+- **1 vCPU**
+- **1 GB RAM**
+- **25 GB SSD**
+- **1000 GB Transfer**
+ 
+### 2. Configure SSH Access
+ 
+- Generate an SSH key pair using DigitalOcean's documentation or your preferred method.
+- Save the private key on your Ansible control node under:
+ 
+```text
+~/.ssh/
 2. Note the Public IP address of the Droplet
 3. In the Ansible control node, update the following entries in the hosts file with the Public IP address, private key file location in the Ansible control node and desired ansible user which will run on the remote Droplet
    ```
