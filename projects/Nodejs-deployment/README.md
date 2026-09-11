@@ -45,8 +45,8 @@ Create a new Droplet with the following configuration:
    - **1 vCPU**
    - **1 GB RAM**
    - **25 GB SSD**
-   - **1000 GB Transfer**
- 
+   - **1000 GB Transfer** 
+
 ### 2. Configure SSH Access
  
 - Generate an SSH key pair using DigitalOcean's documentation or your preferred method.
@@ -56,7 +56,11 @@ Create a new Droplet with the following configuration:
 ~/.ssh/
 ```
 
-2. Note the Public IP address of the Droplet
+### 3. Record the Public IP Address ###
+After the droplet is created, note its public IPv4 address
+
+### 4. Configure the Ansible Inventory ###
+Update your inventory (hosts) file with the Droplet information.
 3. In the Ansible control node, update the following entries in the hosts file with the Public IP address, private key file location in the Ansible control node and desired ansible user which will run on the remote Droplet
    ```
       YOUR_SERVER_IP ansible_user=<remote_user> ansible_ssh_private_key_file=~/.ssh/<private_key>
