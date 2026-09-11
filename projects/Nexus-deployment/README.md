@@ -16,6 +16,18 @@ The objective of this project is to gain hands-on experience with Infrastructure
 * Create Server on Digital Ocean
 * Write Ansible Playbook that creates Linux user for Nexus, configure server, installs and deploys Nexus and verifies that it is running successfully
 
+## Prerequisites
+Before starting this lab, ensure you have the following:
+- A DigitalOcean account
+- An Ansible control node (Linux, macOS, or WSL)
+- An SSH key pair configured for secure access
+- Ansible installed on the control node
+- Internet connectivity between the control node and the DigitalOcean Droplet
+Verify Ansible installation:
+```
+ansible --version
+```
+
 ## Steps
 
 ### 1. Provision a DigitalOcean Droplet 
