@@ -1,0 +1,131 @@
+---
+- name: Install java and net-tools
+  hosts: nexus
+  tasks:
+    - name: Update apt repo and cache
+      apt: #This is a built-in Ansible module for managing packages on Debian-based systems
+        update_cache: yes
+        cache_valid_time: 3600
+        force_apt_get: yes
+    - name: Install Java version 8
+      apt:
+        name: 
+          - openjdk-8-jre-headless #This is a built-in Ansible module for managing packages on Debian-based systems. It is used here to install the OpenJDK 8 runtime environment without the graphical components (headless) on the target hosts.
+          - net-tools #This is a built-in Ansible module for managing packages on Debian-based systems. It is used here to install the net-tools package, which provides networking utilities like ifconfig and netstat on the target hosts.
+        state: present # state: present is a built-in Ansible keyword that specifies the desired state of the package. In this case, it indicates that the packages should be installed and present on the system.
+                 
+- name: Download and install Nexus installer
+  hosts: nexus
+  tasks:
+    - name: Check for nexus folder stats
+      stat:
+        path: /opt/nexus #stat is a built-in Ansible module that allows you to retrieve information about files and directories on the target hosts. It is used here to check the existence and properties of the /opt/nexus directory, which is where the Nexus installer will be extracted.
+      register: nexus_folder_stat
+    - name: Download Nexus installer
+      get_url:
+        url: https://download.sonatype.com/nexus/3/nexus-3.95.0-07-linux-x86_64.tar.gz #get_url is a built-in Ansible module that allows you to download files from a URL. It is used here to download the latest Nexus installer from the Sonatype website.
+        dest: /opt/ #dest is a built-in Ansible keyword that specifies the destination path where the downloaded file should be saved on the target hosts.       
+      register: download_result #register is a built-in Ansible keyword that allows you to store the output of a task in a variable. In this case, it stores the result of the download task in the download_result variable.
+    - debug:
+          msg: "Download result: {{ download_result }}" #debug is a built-in Ansible module that allows you to print messages to the console. It is used here to display the result of the download task stored in the download_result variable.
+    - name: Extract Nexus installer
+      unarchive:
+        src: "{{download_result.dest}}" #src is a built-in Ansible keyword that specifies the source path of the archive file to be extracted on the target hosts. download_result.dest is a variable that contains the destination path of the downloaded Nexus installer, which was stored in the download_result variable in the previous task. 
+        dest: /opt/ #dest is a built-in Ansible keyword that specifies the destination path where the extracted files should be saved on the target hosts.
+        remote_src: yes #remote_src is a built-in Ansible keyword that indicates whether the source file is located on the remote host (yes) or on the local machine (no). In this case, it is set to yes because the Nexus installer was downloaded to the remote host in the previous task.
+      when: not nexus_folder_stat.stat.exists #when is a built-in Ansible keyword that allows you to conditionally execute a task based on the result of a previous task. In this case, it checks if the Nexus folder does not exist (nexus_folder_stat.stat.exists is false) before executing the extraction command.
+    - name: Find the name of the nexus folder
+      find: 
+        paths: /opt/ #paths is a built-in Ansible keyword that specifies the directory path where the find module should search for files or directories on the target hosts. In this case, it is set to /opt/ because the Nexus installer was extracted to that directory in the previous task.
+        patterns: "nexus-*" #patterns is a built-in Ansible keyword that specifies the search pattern for files or directories on the target hosts. In this case, it is set to "nexus-*" to match any directory name that starts with "nexus-" (e.g., nexus-3.95.0-07).
+        file_type: directory #file_type is a built-in Ansible keyword that specifies the type of file to search for on the target hosts. In this case, it is set to directory to search for directories only.
+      register: nexus_folder #register is a built-in Ansible keyword that allows you to store the output of a task in a variable. In this case, it stores the result of the find task in the nexus_folder variable.
+    - debug:
+          msg: "Nexus folder name: {{ nexus_folder.files[0].path }}" #debug is a built-in Ansible module that allows you to print messages to the console. It is used here to display the name of the Nexus folder found in the previous task, which is stored in the nexus_folder variable. The files[0].path syntax is used to access the path of the first file (or directory) found by the find module.          
+    - name: Rename nexus folder to nexus
+      command: mv {{ nexus_folder.files[0].path }} /opt/nexus #command is a built-in Ansible module that allows you to run shell commands on the target hosts. It is used here to rename the Nexus folder found in the previous task to "nexus" by moving it to the /opt/ directory.
+      when: not nexus_folder_stat.stat.exists #when is a built-in Ansible keyword that allows you to conditionally execute a task based on the result of a previous task. In this case, it checks if the Nexus folder does not exist (nexus_folder_stat.stat.exists is false) before executing the rename command.
+
+- name: Create nexus user and group 
+  hosts: nexus
+  tasks:
+    - name: Create nexus group
+      group: #This is a built-in Ansible module for managing groups on Linux systems. It is used here to create a new group called "nexus" on the target hosts.
+        name: nexus
+        state: present
+      register: group_creation_result
+    - name: Create a new user
+      user: #This is a built-in Ansible module for managing users on Linux systems. It is used here to create a new user called "nexus" on the target hosts and assign it to the "nexus" group.
+        name: nexus
+        group: nexus
+        state: present
+        create_home: yes
+        shell: /bin/bash
+      register: user_creation_result
+    - debug:
+          msg: "User creation result: {{ user_creation_result }}"
+    - name: Make nexus folder owned by nexus user and group
+      file: #This is a built-in Ansible module for managing files and directories on Linux systems. It is used here to set the ownership and permissions of the /opt/nexus directory on the target hosts.
+        path: /opt/nexus
+        owner: nexus
+        group: nexus
+        state: directory
+        recurse: yes #recurse is a built-in Ansible keyword that allows you to apply the ownership and permissions settings recursively to all files and subdirectories within the specified directory. In this case, it ensures that all files and subdirectories within /opt/nexus are owned by the "nexus" user and group.
+    - name: Make sonatype-work folder owned by nexus user and group
+      file:
+        path: /opt/sonatype-work
+        owner: nexus
+        group: nexus
+        state: directory
+        recurse: yes
+
+- name: Start nexus with nexus user 
+  hosts: nexus
+  become: True #become is a built-in Ansible keyword that allows you to run tasks with elevated privileges. It is used here to run the tasks as the root user, which is necessary for modifying system files and starting services.  
+  become_user: nexus #become_user is a built-in Ansible keyword that allows you to run tasks as a different user. It is used here to run the tasks as the 'nexus' user, which is necessary for starting the Nexus service with the correct permissions.
+  tasks:
+    - name: set run_as_user to nexus in nexus.rc file
+      lineinfile: #This is a built-in Ansible module for managing lines in text files on Linux systems. It is used here to modify the /opt/nexus/bin/nexus.rc file on the target hosts and set the run_as_user variable to "nexus".
+        path: /opt/nexus/bin/nexus.rc
+        regexp: '^#run_as_user=""' #regexp is a built-in Ansible keyword that specifies a regular expression pattern to search for in the specified file. In this case, it looks for a line that starts with "run_as_user=" in the /opt/nexus/bin/nexus.rc file.
+        line: run_as_user=nexus
+        create: yes #create is a built-in Ansible keyword that allows you to create the specified file if it does not already exist. In this case, it ensures that the /opt/nexus/bin/nexus.rc file is created if it does not exist before adding the run_as_user line.
+    - name: Start nexus service
+      command: /opt/nexus/bin/nexus start #command is a built-in Ansible module that allows you to run shell commands on the target hosts. It is used here to start the Nexus service by executing the start script located in the /opt/nexus/bin/ directory.
+      register: nexus_start_result #register is a built-in Ansible keyword that allows you to store the output of a task in a variable. In this case, it stores the result of the start command in the nexus_start_result variable.
+    - debug:
+          msg: "Nexus start result: {{ nexus_start_result }}" #debug is a built-in Ansible module that allows you to print messages to the console. It is used here to display the result of the Nexus start command stored in the nexus_start_result variable.
+    
+- name: Verify nexus service is running
+  hosts: nexus
+  tasks:
+    - name: Check if nexus service is running
+      shell: ps aux | grep nexus | grep -v grep #shell is a built-in Ansible module that allows you to run shell commands on the target hosts. It is used here to check if the Nexus service is running by searching for the process in the process list.
+      register: nexus_status # It is used here to store the output of the previous command in the variable nexus_status.
+    - debug:
+          msg: "Nexus service response: {{nexus_status.stdout_lines}}"  #stdout_lines is a built-in Ansible variable that contains the output of a command as a list of lines. It is used here to display the output of the previous command in a more readable format.
+    - name: Wait for one minute to allow nexus service to start
+      pause: #pause is a built-in Ansible module that allows you to pause the playbook execution for a specified amount of time. It is used here to wait for one minute (60 seconds) to allow the Nexus service enough time to start before checking its status.
+        minutes: 1 
+    - name: Check with netstat
+      shell: netstat -plnt
+      register: nexus_port_status #register is a built-in Ansible keyword that allows you to store the output of a task in a variable. It is used here to store the output of the previous command in the variable nexus_port_status.
+    - debug:
+          msg: "Nexus port status: {{nexus_port_status.stdout_lines}}"  #stdout_lines is a built-in Ansible variable that contains the output of a command as a list of lines. It is used here to display the output of the previous command in a more readable format.
+    
+    
+    
+    
+    
+
+
+      
+  
+  
+  
+  
+  
+  
+
+  
+  
