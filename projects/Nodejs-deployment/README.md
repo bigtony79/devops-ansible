@@ -6,16 +6,14 @@ This lab demonstrates how to use **Ansible** to automate the provisioning and de
  
 The objective is to gain hands-on experience with Infrastructure as Code (IaC) and configuration management by creating a repeatable deployment process. The playbooks automate server configuration, software installation, user creation, and application deployment, ensuring a consistent and reliable environment every time.
  
-## Technologies Used
- 
+## Technologies Used 
 - Ansible
 - Node.js
 - DigitalOcean (Droplet)
 - Linux (Ubuntu)
 - SSH
  
-## Project Description
- 
+## Project Description 
 - Create a Linux server on DigitalOcean (Droplet)
 - Configure secure SSH access
 - Write Ansible playbooks to:
@@ -28,8 +26,7 @@ The objective is to gain hands-on experience with Infrastructure as Code (IaC) a
 - Inline variables
 - External variables file
  
-## Prerequisites
- 
+## Prerequisites 
 - Ansible installed on the control node
 - DigitalOcean account
 - SSH key pair
