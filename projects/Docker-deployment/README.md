@@ -32,7 +32,7 @@ Define terraform.tvars file before running terraform
 ```
 Make sure that you add terraform.tvars in .gitignore file
 
-### Create AWS EC2 instance by running terraform
+### 2. Create AWS EC2 instance by running terraform
 ```
   terraform init
 ```
@@ -43,6 +43,12 @@ Make sure that you add terraform.tvars in .gitignore file
   terraform apply
 ```
 
-`
+### 3. Update the hosts file with Public IPv4 Address of the EC2 instance
+Copy the public IPv4 IP address of the EC2 instance and insert into hosts
+Exampe:
+```
+ [docker_server]
+ EC2_Public_IPv4_Address ansible_ssh_private_key_
+ 
 
 
