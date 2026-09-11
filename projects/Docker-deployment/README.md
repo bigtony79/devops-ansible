@@ -79,10 +79,35 @@ Example:
  ```
 **Note** - Unlike Digital Ocean droplet where we used root as the ansible_user, we will need to use "ec2-user" as the ansible-user for EC2!
 
-### 6. Run Ansible playbook which refers to the external hosts file which was updated from step #5
+### 6. Run Ansible playbook 
+Execute the playbook using the inventory file updated in Step 5
 ```
  ansible-playbook -i hosts deploy_docker_ext_hosts.yaml
 ```
 
+### 7. Verify Docker deployment
+Verify that Docker is running on the EC2 instance
+```
+   sudo systemctl status docker
+```
+
+List running containers
+```
+   docker ps
+```
+
+Verify the Docker Compose application:
+```
+   docker compose ps
+```
+if all containers show a status of "Up", the deployment was successful.
+
+## Learning Outcomes
+- AWS infrastructure is provisioned using Terraform.
+- An EC2 instance is created and accessible through SSH.
+- Docker and Docker Compose are installed on the instance.
+- The docker-compose.yaml file is copied to the server.
+- Docker containers are started automatically.
+- The application is running and accessible from the deployed environment.
 
 
