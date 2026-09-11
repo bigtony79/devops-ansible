@@ -11,7 +11,7 @@
 
 ## Project Description
 * Create AWS EC2 Instance with Terraform
-* Configure Inventory file to connect to AWS EC2 instnace
+* Configure Inventory file to connect to AWS EC2 instance
 * Write Ansible Playbook that will perform the following:
  - Install Docker and docker-compose
  - Copy docker-compose file to server
