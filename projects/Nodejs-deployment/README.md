@@ -33,10 +33,8 @@ The objective is to gain hands-on experience with Infrastructure as Code (IaC) a
 - Internet connectivity between the Ansible control node and the Droplet
 
 ## Steps
-### 1. Provision a DigitalOcean Droplet
- 
-Create a new Droplet with the following configuration:
- 
+### 1. Provision a DigitalOcean Droplet 
+Create a new Droplet with the following configuration: 
 - **Datacenter**: Choose the closest datacenter to your location.
 - **OS**: Ubuntu (latest available version).
 - **Droplet Type**: Shared CPU - Basic.
@@ -47,11 +45,9 @@ Create a new Droplet with the following configuration:
    - **25 GB SSD**
    - **1000 GB Transfer** 
 
-### 2. Configure SSH Access
- 
+### 2. Configure SSH Access 
 - Generate an SSH key pair using DigitalOcean's documentation or your preferred method.
-- Save the private key on your Ansible control node under:
- 
+- Save the private key on your Ansible control node under: 
 ```
 ~/.ssh/
 ```
