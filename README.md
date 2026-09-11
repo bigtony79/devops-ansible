@@ -12,3 +12,4 @@ A curated collection of Ansible notes, automation concepts, and project reposito
 
 ## Projects
 [Node.js Deployment](projects/Nodejs-deployment)
+[Nexus Deployment](projects/Nexus-deployment)
