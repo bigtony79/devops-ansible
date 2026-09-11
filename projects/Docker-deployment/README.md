@@ -29,7 +29,7 @@ Define terraform.tvars file before running terraform
   instance_type = DESIRED_INSTANCE_TYPE
   public_key_location = PUBLIC_KEY_FILE_LOCATION
   image_name = "al2023-ami-2023*"
- '''
+```
 Make sure that you add terraform.tvars in .gitignore file
 
 ### Create AWS EC2 instance by running terraform
