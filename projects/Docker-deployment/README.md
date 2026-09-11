@@ -2,6 +2,7 @@
 
 ## Overview
 This lab demonstrates how to use **Terraform** and **Ansible** together to automate the provisioning and configuration of a Docker-based application environment on **AWS**. Terraform is used to create the required AWS infrastructure, while Ansible is used to configure the server, install Docker components, and deploy containerized applications.
+...
 
 The objective of this project is to gain hands-on experience with Infrastructure as Code (IaC) and configuration management by building a fully automated deployment workflow. The process begins with provisioning an AWS EC2 instance using Terraform, followed by configuring the instance through Ansible to install Docker and Docker Compose, transfer application configuration files, and launch containers using a Docker Compose stack.
 
