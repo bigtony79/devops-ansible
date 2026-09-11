@@ -52,27 +52,48 @@ Create a new Droplet with the following configuration: 
 ~/.ssh/
 ```
 
-### 3. Record the Public IP Address ###
+### 3. Record the Public IP Address
 After the droplet is created, note its public IPv4 address
 
-### 4. Configure the Ansible Inventory ###
+### 4. Configure the Ansible Inventory
 Update your inventory (hosts) file with the Droplet information.
-3. In the Ansible control node, update the following entries in the hosts file with the Public IP address, private key file location in the Ansible control node and desired ansible user which will run on the remote Droplet
-   ```
+```
       YOUR_SERVER_IP ansible_user=<remote_user> ansible_ssh_private_key_file=~/.ssh/<private_key>
-   ```
-4. Save the **nodejs-app-1.0.0.tgz** package in a desired directory under the Ansible control node. I saved the package under **/home/my-ansible-project/nodejs** directory.
-5. To run playbook with hardcoded values and does not use variables
-   ```
-      ansible-playbook -i hosts deploy-node-no-vars.yaml
-   ```
-6. To run a playbook with inline parameters passed to variables using commandline
-   ```
-      ansible-playbook -i hosts deploy-node-inline-vars.yaml -e "linux_name=tony version=1.0.0 location=/home/my-ansible-project/nodejs"
-   '''
-7. To run a playbook which has reference to external variables file
-   ```
-      ansible-playbook -i hosts deploy-node-ext-vars.yaml
-   ```
+```
+**Note**: Do not commit actual server IP addresses, private keys or other sensitive information to GitHub.
 
+### 4. Store the Application package
+Copy the Node.js application package to a location accessible from the Ansible control node.
+Example:
+```
+   /home/my-ansible-project/nodejs/nodejs-app-1.0.0.tgz
+```
+
+### 5. Execute Playbook Using Hardcoded Values
+Run the playbook that contains all values directly within the playbook.
+```
+   ansible-playbook -i hosts deploy-node-no-vars.yaml
+```
+
+### 6. Execute Playbook Using Inline Variables
+Run the playbook and pass variables through the command line.
+```
+   ansible-playbook -i hosts deploy-node-inline-vars.yaml -e "linux_name=tony version=1.0.0 location=/home/my-ansible-project/nodejs"
+```
+
+### 7. Execute Playbook Using External Variables
+Run the playbook that references an external variables file.
+```
+   ansible-playbook -i hosts deploy-node-ext-vars.yaml
+```
+
+## Learning Outcomes
+By completing this lab, you will learn how to:
+* Manage remote Linux servers with Ansible
+* Automate software installation and system configuration
+* Configure SSH-based connectivity
+* Create and manage application-specific Linux users
+* Deploy Node.js applications using Ansible
+* Use different approaches for handling variables in Ansible
+* Build repeatable and scalable deployment processes using Infrastructure as Code (IaC)
        
