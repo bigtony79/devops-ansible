@@ -23,6 +23,7 @@ This lab demonstrates how to use **Ansible** to automate the provisioning and de
      - **Select a Plan** -   Select a low cost option which will meet your budget. For example, you can select **1vCPU-1GB RAM-25 GB SSD -1000GB Transfer** option.
    - Configure SSH keys for secure access
      - You can follow the instructions provided by DigitalOcean to generate the public and private SSH keys.
+     - Save the Private Key in your ansible control node under the **user's ~/.ssh** directory
    - Select *Public IPv4 address*
    - Set the desired quantity of droplets to 1
    - Click **Create Droplet** button
