@@ -28,8 +28,9 @@ This lab demonstrates how to use **Ansible** to automate the provisioning and de
    - Set the desired quantity of droplets to 1
    - Click **Create Droplet** button
 2. Note the Public IP address of the Droplet
-3. Update the following entries in the hosts file
+3. In the Ansible control node, update the following entries in the hosts file with the Public IP address, private key file location in the Ansible control node and desired ansible user which will run on the remote Droplet
    ```
-      
+      YOUR_SERVER_IP ansible_user=<remote_user> ansible_ssh_private_key_file=~/.ssh/<private_key>
+   ```
 
        
