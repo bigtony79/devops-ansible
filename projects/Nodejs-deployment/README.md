@@ -41,6 +41,9 @@ This lab demonstrates how to use **Ansible** to automate the provisioning and de
    ```
       ansible-playbook -i hosts deploy-node-inline-vars.yaml -e "linux_name=tony version=1.0.0 location=/home/my-ansible-project/nodejs"
    '''
-7. 
+7. To run a playbook which has reference to external variables file
+   ```
+      ansible-playbook -i hosts deploy-node-ext-vars.yaml
+   ```
 
        
