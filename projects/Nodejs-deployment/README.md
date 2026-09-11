@@ -1,7 +1,6 @@
 # Automate Node.js Application Deployment
  
-## Overview
- 
+## Overview 
 This lab demonstrates how to use **Ansible** to automate the provisioning and deployment of a **Node.js** application on a Linux server hosted on **DigitalOcean**. Instead of manually configuring the server, installing dependencies, creating users, and deploying application code, Ansible playbooks are used to define the entire process as code.
  
 The objective is to gain hands-on experience with Infrastructure as Code (IaC) and configuration management by creating a repeatable deployment process. The playbooks automate server configuration, software installation, user creation, and application deployment, ensuring a consistent and reliable environment every time.
