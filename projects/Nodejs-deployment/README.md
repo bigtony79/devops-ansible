@@ -52,9 +52,9 @@ Create a new Droplet with the following configuration:
 - Generate an SSH key pair using DigitalOcean's documentation or your preferred method.
 - Save the private key on your Ansible control node under:
  
-```text
+```
 ~/.ssh/
-
+```
 
 2. Note the Public IP address of the Droplet
 3. In the Ansible control node, update the following entries in the hosts file with the Public IP address, private key file location in the Ansible control node and desired ansible user which will run on the remote Droplet
