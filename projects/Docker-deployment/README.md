@@ -20,6 +20,15 @@ The objective of this project is to gain hands-on experience with Infrastructure
    - Copy docker-compose file to server
    - Start Docker containers
 
+## Prerequisites
+Before starting this lab, ensure you have:
+- AWS Account
+- Terraform installed on the local machine
+- Ansible installed on the control node
+- An SSH key pair for EC2 access
+- Docker Hub account (if pulling private images)
+- A valid docker-compose.yaml file
+
 ## Steps
 ### 1. Create and define terraform.tvars file
 Define terraform.tvars file before running terraform
