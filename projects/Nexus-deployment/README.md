@@ -65,3 +65,13 @@ Update your inventory (hosts) file with the Droplet information.
   ansible-playbook -i hosts deploy-nexus.yaml
 ```
 
+## Learning Outcomes
+By completing this lab, you will gain experience with:
+   - Automating Linux server configuration using Ansible
+   - Managing users, permissions, and system services
+   - Installing and configuring Java-based applications
+   - Deploying Sonatype Nexus Repository Manager
+   - Verifying application health and service availability
+   - Applying Infrastructure as Code (IaC) principles to server provisioning and application deployment
+   - Creating repeatable and scalable deployment processes
+
