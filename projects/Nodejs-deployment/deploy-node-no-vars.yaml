@@ -56,7 +56,7 @@
       unarchive:
         src: /home/nodeapp/app-1.0.0.tgz
         dest: /home/nodeapp/
-        remote_src: yes
+        remote_src: yes #remote_src is a built-in Ansible parameter that specifies whether the source file is on the remote host or the local machine. It is used here to indicate that the source file is on the remote host.
     - name: Install app dependencies
       npm:
          path: /home/nodeapp/package
