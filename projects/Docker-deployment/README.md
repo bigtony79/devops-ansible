@@ -62,6 +62,22 @@ Save the docker-compose.yaml file in the defined location_source directory of th
 ### 4. Create AWS EC2 instance by running terraform
 ```
   terraform init
+dataeng@ubuntu-gmktec:~/ansible-projects/docker$ terraform init
+Initializing the backend...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Using previously-installed hashicorp/aws v6.60.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
 ```
 ```
   terraform plan
