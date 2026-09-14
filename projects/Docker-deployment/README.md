@@ -88,8 +88,8 @@ ansible-playbook -i hosts deploy_docker_ext_hosts.yaml
 
 ### 7. Verify Docker deployment
 Verify that Docker is running on the EC2 instance
-```
-   sudo systemctl status docker
+
+```   
    [ec2-user@ip-10-16-26-59 ~]$ sudo systemctl status docker
 ● docker.service - Docker Application Container Engine
      Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: disabled)
