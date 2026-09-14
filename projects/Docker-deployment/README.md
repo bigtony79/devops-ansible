@@ -137,6 +137,12 @@ Verify the Docker Compose application:
 ```
 if all containers show a status of "Up", the deployment was successful.
 
+### 8. Destroy the AWS Infrastructure using terraform
+Once you are done with the lab, please don't forgot to destroy all AWS infrastructure to avoid additional costs.
+```
+   terraform destroy
+```
+
 ## Learning Outcomes
 - AWS infrastructure is provisioned using Terraform.
 - An EC2 instance is created and accessible through SSH.
