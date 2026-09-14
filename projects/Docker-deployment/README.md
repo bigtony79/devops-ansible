@@ -81,8 +81,8 @@ Example:
 
 ### 6. Run Ansible playbook 
 Execute the playbook using the inventory file updated in Step 5
+**ansible-playbook -i hosts deploy_docker_ext_hosts.yaml**
 ```
- ansible-playbook -i hosts deploy_docker_ext_hosts.yaml
 dataeng@ubuntu-gmktec:~/ansible-projects/docker$ ansible-playbook -i hosts deploy_docker_ext_hosts.yaml
 
 PLAY [Install Docker and Docker Compose] ************************************************************************************************************************************************************************
