@@ -80,7 +80,7 @@ Example:
 **Note** - Unlike Digital Ocean droplet where we used root as the ansible_user, we will need to use "ec2-user" as the ansible-user for EC2!
 
 ### 6. Run Ansible playbook 
-Execute the playbook using the inventory file updated in Step 5
+Execute the playbook using the inventory file updated in Step 5 from the Ansible control node
 
 ```
 ansible-playbook -i hosts deploy_docker_ext_hosts.yaml
