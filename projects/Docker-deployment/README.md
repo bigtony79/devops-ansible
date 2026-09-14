@@ -90,6 +90,34 @@ ansible-playbook -i hosts deploy_docker_ext_hosts.yaml
 Verify that Docker is running on the EC2 instance
 ```
    sudo systemctl status docker
+   [ec2-user@ip-10-16-26-59 ~]$ sudo systemctl status docker
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: disabled)
+     Active: active (running) since Mon 2026-09-14 21:47:04 UTC; 7min ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+    Process: 29025 ExecStartPre=/bin/mkdir -p /run/docker (code=exited, status=0/SUCCESS)
+    Process: 29026 ExecStartPre=/usr/libexec/docker/docker-setup-runtimes.sh (code=exited, status=0/SUCCESS)
+   Main PID: 29027 (dockerd)
+      Tasks: 52
+     Memory: 65.0M
+        CPU: 45.429s
+     CGroup: /system.slice/docker.service
+             ├─29027 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --default-ulimit nofile=32768:65536
+             ├─30448 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8083 -container-ip 172.18.0.2 -container-port 80
+             ├─30455 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 8083 -container-ip 172.18.0.2 -container-port 80
+             ├─30495 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 3306 -container-ip 172.18.0.4 -container-port 3306
+             └─30502 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 3306 -container-ip 172.18.0.4 -container-port 3306
+
+Sep 14 21:47:03 ip-10-16-26-59.ec2.internal systemd[1]: Starting docker.service - Docker Application Container Engine...
+Sep 14 21:47:03 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:03.764146185Z" level=info msg="Starting up"
+Sep 14 21:47:03 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:03.816455792Z" level=info msg="Loading containers: start."
+Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.311766108Z" level=info msg="Loading containers: done."
+Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.339680701Z" level=info msg="Docker daemon" commit=6fdf0a6 containerd-snapshotter=false storage-driver=overlay2 version=25.>
+Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.339927548Z" level=info msg="Daemon has completed initialization"
+Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.383503696Z" level=info msg="API listen on /run/docker.sock"
+Sep 14 21:47:04 ip-10-16-26-59.ec2.internal systemd[1]: Started docker.service - Docker Application Container Engine.
+Sep 14 21:47:46 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:46.972909542Z" level=info msg="ignoring event" container=ecd220a7a795cdbe32c30e123dbebb22f0bb954bff6b10600aafec06c507c90d mod>
 ```
 
 List running containers
