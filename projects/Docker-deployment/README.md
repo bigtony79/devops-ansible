@@ -109,15 +109,15 @@ TriggeredBy: ● docker.socket
              ├─30495 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 3306 -container-ip 172.18.0.4 -container-port 3306
              └─30502 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 3306 -container-ip 172.18.0.4 -container-port 3306
 
-Sep 14 21:47:03 ip-10-16-26-59.ec2.internal systemd[1]: Starting docker.service - Docker Application Container Engine...
-Sep 14 21:47:03 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:03.764146185Z" level=info msg="Starting up"
-Sep 14 21:47:03 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:03.816455792Z" level=info msg="Loading containers: start."
-Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.311766108Z" level=info msg="Loading containers: done."
-Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.339680701Z" level=info msg="Docker daemon" commit=6fdf0a6 containerd-snapshotter=false storage-driver=overlay2 version=25.>
-Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.339927548Z" level=info msg="Daemon has completed initialization"
-Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.383503696Z" level=info msg="API listen on /run/docker.sock"
-Sep 14 21:47:04 ip-10-16-26-59.ec2.internal systemd[1]: Started docker.service - Docker Application Container Engine.
-Sep 14 21:47:46 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:46.972909542Z" level=info msg="ignoring event" container=ecd220a7a795cdbe32c30e123dbebb22f0bb954bff6b10600aafec06c507c90d mod>
+   Sep 14 21:47:03 ip-10-16-26-59.ec2.internal systemd[1]: Starting docker.service - Docker Application Container Engine...
+   Sep 14 21:47:03 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:03.764146185Z" level=info msg="Starting up"
+   Sep 14 21:47:03 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:03.816455792Z" level=info msg="Loading containers: start."
+   Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.311766108Z" level=info msg="Loading containers: done."
+   Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.339680701Z" level=info msg="Docker daemon" commit=6fdf0a6 containerd-snapshotter=false storage-   driver=overlay2 version=25.>
+   Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.339927548Z" level=info msg="Daemon has completed initialization"
+   Sep 14 21:47:04 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:04.383503696Z" level=info msg="API listen on /run/docker.sock"
+   Sep 14 21:47:04 ip-10-16-26-59.ec2.internal systemd[1]: Started docker.service - Docker Application Container Engine.
+   Sep 14 21:47:46 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:47:46.972909542Z" level=info msg="ignoring event" container=ecd220a7a795cdbe32c30e123dbebb22f0bb954bff6b10600aafec06c507c90d mod>
 ```
 
 List running containers
@@ -131,6 +131,9 @@ List running containers
 Verify the Docker Compose application:
 ```
    docker compose ps
+   NAME      IMAGE        COMMAND                  SERVICE      CREATED         STATUS         PORTS
+   myadmin   phpmyadmin   "/docker-entrypoint.…"   phpmyadmin   9 minutes ago   Up 9 minutes   0.0.0.0:8083->80/tcp, [::]:8083->80/tcp
+   mysql     mysql        "docker-entrypoint.s…"   mysql        9 minutes ago   Up 9 minutes   0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp, 33060/tcp
 ```
 if all containers show a status of "Up", the deployment was successful.
 
