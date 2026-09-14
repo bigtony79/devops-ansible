@@ -123,6 +123,9 @@ Sep 14 21:47:46 ip-10-16-26-59.ec2.internal dockerd[29027]: time="2026-09-14T21:
 List running containers
 ```
    docker ps
+   CONTAINER ID   IMAGE        COMMAND                  CREATED         STATUS         PORTS                                                  NAMES
+   a0522c17d96f   mysql        "docker-entrypoint.s…"   7 minutes ago   Up 7 minutes   0.0.0.0:3306->3306/tcp, :::3306->3306/tcp, 33060/tcp   mysql
+   2aa9fc9a28f6   phpmyadmin   "/docker-entrypoint.…"   7 minutes ago   Up 7 minutes   0.0.0.0:8083->80/tcp, :::8083->80/tcp                  myadmin
 ```
 
 Verify the Docker Compose application:
