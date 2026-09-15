@@ -66,7 +66,7 @@ Save the docker-compose.yaml file in the defined location_source directory of th
 ```
   terraform apply
 ```
-### 5. Terraform 
+### 5. Configure Terraform to Execute Ansible Automatically
 Unlike the Docker deployment project, we are not going to manually capture the public IP address of the EC2 instance and update the hosts file as we are using Terraform to provision the server and then run the playbook on the newly created server.  The following code within the *main.tf* file will fulfill this requirement:
 ```
   resource "terraform_data" "ansible_run" {
