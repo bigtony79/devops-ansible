@@ -84,6 +84,8 @@ Explanation: 
 - The generated EC2 public IP address is passed directly to Ansible as an inline inventory.
 - The `--private-key` parameter allows Ansible to authenticate using SSH.
 - The `--user ec2-user` parameter specifies the default AWS Linux user account.
+
+  
 **Note:** The trailing comma after the IP address is required. Without it, Ansible interprets the value as a filename rather than an inventory host.
 
 ## Learning Outcomes
