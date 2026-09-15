@@ -78,6 +78,13 @@ Unlike the Docker deployment project, we are not going to manually capture the p
   }
 }
 ```
+Explanation: 
+- `aws_instance.myapp_server_one.public_ip` is used as a trigger, causing the resource to execute whenever the EC2 instance changes.
+- The `local-exec` provisioner executes an Ansible playbook from the Terraform execution environment.
+- The generated EC2 public IP address is passed directly to Ansible as an inline inventory.
+- The `--private-key` parameter allows Ansible to authenticate using SSH.
+- The `--user ec2-user` parameter specifies the default AWS Linux user account.
+
 ## Learning Outcomes
  
 By completing this lab, you will learn how to: 
