@@ -14,3 +14,4 @@ A curated collection of Ansible notes, automation concepts, and project reposito
 1. [Node.js Deployment](projects/Nodejs-deployment) 
 2. [Nexus Deployment](projects/Nexus-deployment)
 3. [Docker Deployment](projects/Docker-deployment)
+4. [Terraform Integration with Ansible](projects/Terraform-Ansible)
