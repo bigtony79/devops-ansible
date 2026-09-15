@@ -1,7 +1,11 @@
 # Ansible Integration in Terraform
 
 ## Overview
-This project will demonstrate the use of ***terraform_data*** module which will eliminate manual tasks of obtaining IP address of an EC2 instance, updating hosts and then executing ansible playbook. Instead everything will be automated from the Terraform script itself.
+This project demonstrates how to integrate **Ansible** with **Terraform** using the **terraform_data** resource to automate server provisioning and configuration. Traditionally, after Terraform provisions an AWS EC2 instance, additional manual steps are required to obtain the server's public IP address, update the Ansible inventory file, and execute an Ansible playbook.
+ 
+Using Terraform's `terraform_data` resource and a `local-exec` provisioner, these manual tasks are eliminated. Once Terraform successfully provisions the EC2 instance, it automatically invokes an Ansible playbook that connects to the newly created server and performs the required configuration tasks.
+ 
+This approach demonstrates how Infrastructure as Code (IaC) and Configuration Management can work together to provide a fully automated deployment workflow, from infrastructure provisioning to application deployment.
 
 ## Technologies used
 * Ansible
