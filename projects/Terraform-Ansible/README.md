@@ -1,6 +1,7 @@
 # Ansible Integration in Terraform
 
 ## Overview
+This project will demonstrate the use of ***terraform_data*** module which will eliminate manual tasks of obtaining IP address of an EC2 instance, updating hosts and then executing ansible playbook. Instead everything will be automated from the Terraform script itself.
 
 ## Technologies used
 * Ansible
@@ -61,7 +62,20 @@ Save the docker-compose.yaml file in the defined location_source directory of th
 ```
   terraform apply
 ```
-Unlike the Docker deployment project, we are not going to manually capture the public IP address of the EC2 instance and update the hosts file as we are using Terraform to provision the server and then run the playbook on the newly created server.
+### 5. Terraform 
+Unlike the Docker deployment project, we are not going to manually capture the public IP address of the EC2 instance and update the hosts file as we are using Terraform to provision the server and then run the playbook on the newly created server.  The following code within the *main.tf* file will fulfill this requirement:
+```
+  resource "terraform_data" "ansible_run" {
+  triggers_replace = [
+    aws_instance.myapp_server_one.public_ip
+  ]
+  provisioner "local-exec" {
+    command = "ansible-playbook -i ${aws_instance.myapp_server_one.public_ip}, --private-key ${var.ssh_private_key_location} --user ec2-user deploy_docker_tf_hosts.yaml"
+  }
+}
+```
+
+
 
 
 
