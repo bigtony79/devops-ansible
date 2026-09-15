@@ -88,6 +88,9 @@ Explanation: 
   
 **Note:** The trailing comma after the IP address is required. Without it, Ansible interprets the value as a filename rather than an inventory host.
 
+### 6. Destroy AWS Infrastrucure
+Once you are done, run ```terraform destroy``` to destroy the AWS infrastructure to avoid extra costs.
+
 ## Learning Outcomes
  
 By completing this lab, you will learn how to: 
