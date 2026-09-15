@@ -67,7 +67,9 @@ Save the docker-compose.yaml file in the defined location_source directory of th
   terraform apply
 ```
 ### 5. Configure Terraform to Execute Ansible Automatically
-Unlike the Docker deployment project, we are not going to manually capture the public IP address of the EC2 instance and update the hosts file as we are using Terraform to provision the server and then run the playbook on the newly created server.  The following code within the *main.tf* file will fulfill this requirement:
+In the previous [Docker](Docker-deployment) deployment project, the EC2 instance's public IP address had to be manually retrieved and added to the Ansible inventory file before running the playbook. In this project, that process is fully automated. Terraform provisions the EC2 instance and then immediately invokes an Ansible playbook against the newly created server, eliminating the need for manual inventory updates or additional deployment steps.
+
+The following code snippet in the main.tf file uses the terraform_data resource and a local-exec provisioner to automatically execute the Ansible playbook after the EC2 instance has been created:
 ```
   resource "terraform_data" "ansible_run" {
   triggers_replace = [
