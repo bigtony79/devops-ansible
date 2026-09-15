@@ -78,7 +78,17 @@ Unlike the Docker deployment project, we are not going to manually capture the p
   }
 }
 ```
-
+## Learning Outcomes
+ 
+By completing this lab, you will learn how to: 
+- Provision AWS infrastructure using Terraform
+- Use Terraform variables and tfvars files
+- Integrate Terraform and Ansible workflows
+- Dynamically pass infrastructure information to Ansible
+- Eliminate manual inventory management
+- Configure Linux servers using Ansible
+- Deploy Docker-based applications automatically after provisioning
+- Implement end-to-end Infrastructure as Code (IaC) automation
 
 
 
