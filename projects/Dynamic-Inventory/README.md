@@ -30,10 +30,46 @@ In main.tf, we will add ```enable_dns_hostnames = true``` in the VPC resource bl
 }
 ```
 
-### 2. Create 4 EC2 Instances with Terraform
-We will create 4 EC2 Instances by running ```terraform apply```
+### 2. Create and define terraform.tvars file
+Define terraform.tvars file before running terraform
+```
+  vpc_cidr_block = DESIRED_VPC_CIDR_BLOCK
+  subnet_cidr_block = SUBNET_CIDR_BLOCK
+  avail_zone = AVAIL_ZONE
+  env_prefix = DESIRED_PREFIX
+  my_ip = IP_ADDRESS 
+  instance_type = DESIRED_INSTANCE_TYPE
+  public_key_location = PUBLIC_KEY_FILE_LOCATION
+  image_name = "al2023-ami-2023*"
+```
+Make sure that you add terraform.tvars in .gitignore file
 
-### 3. Configure Ansible Dynamic Inventory plugin
+### 3. Define Ansible Variables file
+Create your own ansible variable file (such as vars-file.yaml) and define the following key:value pairs:
+```
+ docker_compose_dir: TARGET_DOCKER_COMPOSE_DIRECTORY_EC2_INSTANCE
+ location_source: SOURCE_DIRECTORY_ANSIBLE_CONTROL_NODE
+ location_target: TARGET_DIRECTORY_EC2_INSTANCE
+ docker_username: DOCKERHUB_USER_NAME
+ docker_password: PASSWORD_OR_PAT
+```
+ Make sure that you add this file in .gitignore! 
+
+### 3. Save the docker-compose.yaml file in the Ansible control node
+Save the docker-compose.yaml file in the defined location_source directory of the Ansible control node
+ 
+### 4. Create AWS EC2 instance by running terraform
+```
+  terraform init
+```
+```
+  terraform plan
+```
+```
+  terraform apply
+```
+
+### 5. Configure Ansible Dynamic Inventory plugin
 This will allow Ansible to connect to AWS and fetch required information
 
 #### a.  Enable plugin in ansible configuration file
@@ -59,7 +95,7 @@ Please note that we are not connecting to these EC2 Servers when we run the abov
   ansible-inventory -i inventory_aws_ec2.yaml --graph
 ```
 
-### 4. Configure Ansible to use dynamic inventory
+### 6. Configure Ansible to use dynamic inventory
 * In the Ansible playbook, we can set the value for **hosts** to either ```hosts: all``` or ```hosts:aws_ec2```.
 * To globally set the username and private key to allow Ansible to access the remote EC2 instances, we can add the following to the ansible.cfg file:
 ```
@@ -67,7 +103,7 @@ Please note that we are not connecting to these EC2 Servers when we run the abov
   private_key_file = ~/.ssh/id_ed25519
 ```
 
-### 5. Run Ansible playbook
+### 7. Run Ansible playbook
 We do not need to add hosts file now that we are using dynamic inventory plugin
 ```
   ansible-playbook deploy_docker_tf_hosts.yaml
