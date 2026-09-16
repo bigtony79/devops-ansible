@@ -18,6 +18,16 @@ The objective of this project is to gain hands-on experience with dynamic invent
 
 ## Pre-requisites
 
+Before starting this lab, ensure you have:
+ 
+- AWS Account
+- Terraform installed
+- Ansible installed
+- AWS CLI installed and configured
+- IAM credentials with permissions to query EC2 resources
+- SSH key pair for EC2 access
+- Python packages required by the AWS EC2 plugin
+
 ## Steps
 
 ### 1. Enable Public DNS Name in VPC
@@ -57,10 +67,10 @@ Create your own ansible variable file (such as vars-file.yaml) and define the fo
 ```
  Make sure that you add this file in .gitignore! 
 
-### 3. Save the docker-compose.yaml file in the Ansible control node
+### 4. Save the docker-compose.yaml file in the Ansible control node
 Save the docker-compose.yaml file in the defined location_source directory of the Ansible control node
  
-### 4. Create AWS EC2 instance by running terraform
+### 5. Create AWS EC2 instance by running terraform
 ```
   terraform init
 ```
@@ -71,8 +81,8 @@ Save the docker-compose.yaml file in the defined location_source directory of th
   terraform apply
 ```
 
-### 5. Configure Ansible Dynamic Inventory plugin
-This will allow Ansible to connect to AWS and fetch required information
+### 6. Configure Ansible Dynamic Inventory plugin
+This configuration enables Ansible to query AWS directly and dynamically build an inventory of EC2 instances instead of relying on a statically maintained hosts file.
 
 #### a.  Enable plugin in ansible configuration file
 Modify the ansible.cfg file by including the following:
@@ -97,22 +107,40 @@ Please note that we are not connecting to these EC2 Servers when we run the abov
   ansible-inventory -i inventory_aws_ec2.yaml --graph
 ```
 
-### 6. Configure Ansible to use dynamic inventory
-* In the Ansible playbook, we can set the value for **hosts** to either ```hosts: all``` or ```hosts:aws_ec2```.
+### 7. Configure Ansible to use dynamic inventory
+* Because the inventory is generated dynamically, the playbook can target either all discovered hosts or the AWS EC2 inventory group created by the plugin:
+```
+  hosts: all
+```
+or
+```
+  hosts: aws_ec2
+```
+
 * To globally set the username and private key to allow Ansible to access the remote EC2 instances, we can add the following to the ansible.cfg file:
 ```
   remote_user =ec2-user
   private_key_file = ~/.ssh/id_ed25519
 ```
 
-### 7. Run Ansible playbook
+### 8. Run Ansible playbook
 We do not need to add hosts file now that we are using dynamic inventory plugin
 ```
   ansible-playbook deploy_docker_tf_hosts.yaml
 ```
 Please note that we added ```inventory = inventory_aws_ec2.yaml``` in the ansible.cfg file, so don't need to specify the inventory file in the ansible-playbook command.
 
+### 9. Destroy AWS infrastructure
+Don't forget to run ```terraform destroy``` after you are done with the project.
 
+## Learning Outcomes 
+By completing this lab, you will learn how to: 
+- Configure the AWS EC2 Dynamic Inventory plugin
+- Replace static inventories with dynamically discovered hosts
+- Integrate Terraform and Ansible in cloud environments
+- Manage multiple EC2 instances efficiently
+- Configure Ansible authentication globally
+- Scale Ansible automation without inventory maintenance
 
 
   
