@@ -1,7 +1,9 @@
 # Automate Kubernetes Deployment using Ansible
 
 ## Overview
+This lab demonstrates how to use **Ansible** to automate application deployments on an **Amazon EKS (Elastic Kubernetes Service)** cluster. While Terraform is responsible for provisioning the Kubernetes infrastructure, Ansible is used to interact with the cluster and deploy workloads in a repeatable and automated manner.
 
+The objective of this project is to gain hands-on experience integrating Ansible with Kubernetes by deploying an application to an EKS cluster. After provisioning the cluster with Terraform, Ansible uses Kubernetes modules to create a dedicated namespace, deploy application resources from Kubernetes manifest files, and verify that the deployment is running successfully.
 
 ## Technologies used
 * Ansible
