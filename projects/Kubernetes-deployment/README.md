@@ -16,8 +16,12 @@ This project showcases how Terraform, Ansible, and Kubernetes can work together 
 * Linux
 
 ## Project Description
-* Create EKS cluster with Terraform
-* Write Ansible playbook to deploy application in new K8s namespace
+* Provision an Amazon EKS cluster using Terraform
+* Generate a kubeconfig file for cluster access
+* Write an Ansible playbook to:
+  - Create a Kubernetes namespace
+  - Deploy an application using Kubernetes manifests
+  - Verify that the deployment is running successfully
   
 ## Steps
 
@@ -36,7 +40,7 @@ This project showcases how Terraform, Ansible, and Kubernetes can work together 
 ### 2. Create a kubeconfig file
 We will need to create a kubeconfig file to allow Ansible to connect to the EKS cluster
 ```
-  aws eks update-config --region us-east-1 --name myapp-eks-cluster --kubeconfig kubeconfig_myapp-eks-cluster
+  aws eks update-kubeconfig --region us-east-1 --name myapp-eks-cluster --kubeconfig kubeconfig_myapp-eks-cluster  
 ```
 
 ### 3. Ansible playbook to deploy app to K8s
@@ -64,7 +68,7 @@ You can use pip3 to install the above packages. For example, to install pyyaml i
 ### 5. Connect to the EKS cluster
 * On the terminal, set the kubeconfig to point to the EKS cluster
   ```
-    export KUBECONFIG = kubeconfig_myapp-eks-cluster
+    export KUBECONFIG=kubeconfig_myapp-eks-cluster
   ```
 
 * Check for the newly created namespace:
@@ -98,6 +102,16 @@ Once you are done with the project, you can destroy the cluster to avoid additio
 ```
   terraform destroy
 ```
-  
+## Learning Outcomes
+By completing this lab, you will gain experience with: 
+- Kubernetes fundamentals
+- Amazon EKS administration
+- Kubernetes namespaces, pods, and services
+- Ansible Kubernetes modules
+- Infrastructure as Code using Terraform
+- Automating Kubernetes application deployments
+- Managing cloud-native applications through code
+
+
     
   
