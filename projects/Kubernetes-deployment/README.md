@@ -44,7 +44,7 @@ Before starting this lab, ensure you have the following:
 ```
   terraform apply
 ```
-<INSERT SCREENSHOT of EKS Cluster>
+![Alternative Text](EKS-Cluster-Screenshot.png)
 
 ### 2. Create a kubeconfig file
 We will need to create a kubeconfig file to allow Ansible to connect to the EKS cluster
