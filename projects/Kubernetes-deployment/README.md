@@ -85,18 +85,18 @@ You can use pip3 to install the above packages. For example, to install pyyaml i
   ```
   kubectl get namespace
   ```
-  <INSERT OUTPUT>
-
+  
 * Check status of pods in namespace **my-app**
     ```
     kubectl get pod -n my-app
     ```
-    <INSERT OUTPUT>
+  
 * Check status of service
     ```
       kubectl get svc -n my-app
     ```
-    <INSERT OUTPUT>
+![Alternative Text](kubectl-outputs.png)
+  
 * Access the nginx web server
   <INSERT OUTPUT>
   
