@@ -28,7 +28,7 @@ In main.tf, we will add ```enable_dns_hostnames = true``` in the VPC resource bl
     Name: "${var.env_prefix}-vpc"
   }
 }
-'''
+```
 
 ### 2. Create 4 EC2 Instances with Terraform
 We will create 4 EC2 Instances by running ```terraform apply```
