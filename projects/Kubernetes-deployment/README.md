@@ -23,6 +23,15 @@ This project showcases how Terraform, Ansible, and Kubernetes can work together 
   - Deploy an application using Kubernetes manifests
   - Verify that the deployment is running successfully
   
+## Prerequisites 
+Before starting this lab, ensure you have the following:
+ - AWS Account with permissions to create and manage EKS resources
+- Terraform installed on the local machine
+- Ansible installed on the control node
+- AWS CLI installed and configured
+- kubectl installed
+- Python 3.9 or later
+
 ## Steps
 
 ### 1. Create the EKS Cluster using Terraform
