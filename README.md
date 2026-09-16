@@ -16,3 +16,4 @@ A curated collection of Ansible notes, automation concepts, and project reposito
 3. [Docker Deployment](projects/Docker-deployment)
 4. [Terraform Integration with Ansible](projects/Terraform-Ansible)
 5. [Dynamic Inventory](projects/Dynamic-Inventory)
+6. [Kubernetes Deployment and Configuration](projects/Kubernetes-deployment)
