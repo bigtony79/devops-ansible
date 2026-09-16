@@ -2,7 +2,7 @@
 
 ## Overview
 
-* We will create 3 EC2 Instances with Terraform
+* We will create 4 EC2 Instances with Terraform
 * Connect to these servers with Ansible without hard-coding the IP addresses
 
 ## Technologies used
@@ -18,61 +18,65 @@
 
 ## Steps
 
-### 1. Create 3 EC2 Instances with Terraform
+### 1. Enable Public DNS Name in VPC
+In main.tf, we will add ```enable_dns_hostnames = true``` in the VPC resource block:
 ```
-resource "aws_instance" "myapp_server_one" {
-  ami = data.aws_ami.amazon_linux_image.id
-  instance_type = var.instance_type
-  subnet_id = aws_subnet.myapp-subnet.id
-  vpc_security_group_ids = [aws_security_group.myapp-sg.id]
-  availability_zone = var.avail_zone
-  associate_public_ip_address = true
-  key_name = aws_key_pair.myapp-keypair.key_name
+  resource "aws_vpc" "myapp-vpc" {
+  cidr_block =  var.vpc_cidr_block
+  enable_dns_hostnames = true
   tags = {
-    Name: "${var.env_prefix}-server-1"
-  }
-}
-
-
-resource "aws_instance" "myapp_server_two" {
-  ami = data.aws_ami.amazon_linux_image.id
-  instance_type = var.instance_type
-  subnet_id = aws_subnet.myapp-subnet.id
-  vpc_security_group_ids = [aws_security_group.myapp-sg.id]
-  availability_zone = var.avail_zone
-  associate_public_ip_address = true
-  key_name = aws_key_pair.myapp-keypair.key_name
-  tags = {
-    Name: "${var.env_prefix}-server-2"
-  }
-}
-
-
-resource "aws_instance" "myapp_server_three" {
-  ami = data.aws_ami.amazon_linux_image.id
-  instance_type = var.instance_type
-  subnet_id = aws_subnet.myapp-subnet.id
-  vpc_security_group_ids = [aws_security_group.myapp-sg.id]
-  availability_zone = var.avail_zone
-  associate_public_ip_address = true
-  key_name = aws_key_pair.myapp-keypair.key_name
-  tags = {
-    Name: "${var.env_prefix}-server-3"
-  }
-}
-
-
-resource "aws_instance" "myapp_server_four" {
-  ami = data.aws_ami.amazon_linux_image.id
-  instance_type = var.instance_type
-  subnet_id = aws_subnet.myapp-subnet.id
-  vpc_security_group_ids = [aws_security_group.myapp-sg.id]
-  availability_zone = var.avail_zone
-  associate_public_ip_address = true
-  key_name = aws_key_pair.myapp-keypair.key_name
-  tags = {
-    Name: "${var.env_prefix}-server-4"
+    Name: "${var.env_prefix}-vpc"
   }
 }
 '''
+
+### 2. Create 4 EC2 Instances with Terraform
+We will create 4 EC2 Instances by running ```terraform apply```
+
+### 3. Configure Ansible Dynamic Inventory plugin
+This will allow Ansible to connect to AWS and fetch required information
+
+#### a.  Enable plugin in ansible configuration file
+Modify the ansible.cfg file by including the following:
+```
+  enable_plugins = aws_ec2
+```
+#### b. Create plugin configuration file
+* Config file must end with "aws_ec2.yaml". In our case, it will be inventory_aws_ec2.yaml.
+  ```
+    ---
+    plugin: aws_ec2
+    regions:
+      - us-east-1
+  ```
+* With this configuration, we can execute the plugin separately for testing purposes without playbook configuration
+```
+  ansible-inventory -i inventory_aws_ec2.yaml --list 
+```
+Please note that we are not connecting to these EC2 Servers when we run the above command - we are just connecting to the Cloud Account and listing out information of the EC2 Instances.
+* To view a cleaner output which just lists the IP addresses instead of the full information for the 4 instances
+```
+  ansible-inventory -i inventory_aws_ec2.yaml --graph
+```
+
+### 4. Configure Ansible to use dynamic inventory
+* In the Ansible playbook, we can set the value for **hosts** to either ```hosts: all``` or ```hosts:aws_ec2```.
+* To globally set the username and private key to allow Ansible to access the remote EC2 instances, we can add the following to the ansible.cfg file:
+```
+  remote_user =ec2-user
+  private_key_file = ~/.ssh/id_ed25519
+```
+
+### 5. Run Ansible playbook
+We do not need to add hosts file now that we are using dynamic inventory plugin
+```
+  ansible-playbook deploy_docker_tf_hosts.yaml
+```
+Please note that we added ```inventory = inventory_aws_ec2.yaml``` in the ansible.cfg file, so don't need to specify the inventory file in the ansible-playbook command.
+
+
+
+
+  
+
 
