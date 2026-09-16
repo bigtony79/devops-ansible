@@ -52,6 +52,44 @@ You can use pip3 to install the above packages. For example, to install pyyaml i
   pip3 install pyyaml --user
 ```
 
+### 4. Run Ansible playbook
+```
+  ansible-playbook deploy-to-k8s.yaml
+```
 
+### 5. Connect to the EKS cluster
+* On the terminal, set the kubeconfig to point to the EKS cluster
+  ```
+    export KUBECONFIG = kubeconfig_myapp-eks-cluster
+  ```
 
+* Check for the newly created namespace:
+  ```
+  kubectl get namespace
+  ```
+  <INSERT OUTPUT>
+
+* Check status of pods in namespace **my-app**
+    ```
+    kubectl get pod -n my-app
+    ```
+    <INSERT OUTPUT>
+* Check status of service
+    ```
+      kubectl get svc -n my-app
+    ```
+    <INSERT OUTPUT>
+* Access the nginx web server
+  <INSERT OUTPUT>
+  
+### 6. Minor improvement of use of kubeconfig
+Instead of saving the kubeconfig entry in multiple tasks within the playbook, you can define it once and use it for all the tasks.
+```
+  export K8S_AUTH_KUBECONFIG=kubeconfig_myapp-eks-cluster
+```
+You can remove the reference of kubeconfig entries in the tasks from the playbook.
+ 
+    
+  
+    
   
