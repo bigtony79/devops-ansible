@@ -73,6 +73,7 @@ You can use pip3 to install the above packages. For example, to install pyyaml i
 ```
   ansible-playbook deploy-to-k8s.yaml
 ```
+![Alternative Text](playbook-execution.png)
 
 ### 5. Connect to the EKS cluster
 * On the terminal, set the kubeconfig to point to the EKS cluster
