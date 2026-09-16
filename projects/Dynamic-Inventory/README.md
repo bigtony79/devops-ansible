@@ -2,8 +2,10 @@
 
 ## Overview
 
-* We will create 4 EC2 Instances with Terraform
-* Connect to these servers with Ansible without hard-coding the IP addresses
+This lab demonstrates how to use Ansible's AWS EC2 Dynamic Inventory plugin to automatically discover and manage AWS EC2 instances without maintaining a static inventory file. Instead of manually updating server IP addresses in an Ansible hosts file, Ansible queries AWS directly and dynamically builds its inventory based on the EC2 instances available in the AWS account.
+ 
+The objective of this project is to gain hands-on experience with dynamic inventory management and cloud automation. Terraform is used to provision multiple EC2 instances, while Ansible leverages the AWS EC2 plugin to discover those instances and execute playbooks against them. This approach improves scalability, reduces manual administration, and ensures that infrastructure changes are automatically reflected in Ansible's inventory.
+
 
 ## Technologies used
 * Ansible
