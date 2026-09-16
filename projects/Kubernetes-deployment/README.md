@@ -89,7 +89,11 @@ Instead of saving the kubeconfig entry in multiple tasks within the playbook, yo
 ```
 You can remove the reference of kubeconfig entries in the tasks from the playbook.
  
-    
+### 7. Destroy the EKS Cluster
+Once you are done with the project, you can destroy the cluster to avoid additional costs.
+```
+  terraform destroy
+```
   
     
   
