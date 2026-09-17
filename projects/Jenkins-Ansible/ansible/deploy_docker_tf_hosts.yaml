@@ -1,0 +1,106 @@
+---
+- name: Install Docker and Docker Compose
+  hosts: all
+  become: yes    
+  tasks:
+    - name: Install Docker
+      yum: 
+        name: docker
+        update_cache: yes # Update the package cache before installing
+        state: present  
+   
+- name: Download and Install Docker Compose
+  hosts: all
+  vars_files:
+    - vars-file.yaml
+  tasks:  
+    - name: Create directory for docker-compose
+      file:
+        path: "{{docker_compose_dir}}"
+        state: directory
+    - name: Get architecture of remote host
+      command: uname -m
+      register: architecture    
+    - name: Download docker-compose    
+      get_url:
+        url: "https://github.com/docker/compose/releases/download/v5.5.0/docker-compose-linux-{{architecture.stdout}}"
+        dest: "{{docker_compose_dir}}/docker-compose"
+        mode: '+x'
+    - name: Verify docker-compose installation
+      command: "{{docker_compose_dir}}/docker-compose --version"
+      register: docker_compose_version
+    - name: Display docker-compose version
+      debug: 
+        msg: "Docker Compose version installed: {{ docker_compose_version.stdout }}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+     
+     
+            
+   
+   
+   
+   
+   
+   
+   
+   
+   
+  
+  
+  
+  
+  
+  
+  
+    
+
+      

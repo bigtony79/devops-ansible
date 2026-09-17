@@ -1,0 +1,12 @@
+#ignore .github folder
+.github/*
+
+#ignore .terraform folder
+.terraform/*
+
+#ignore terraform state files
+*.tfstate
+*.tfstate.*
+
+#ignore terraform variables files
+*.tfvars
