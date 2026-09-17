@@ -69,6 +69,8 @@ Run terraform to create the 2 EC2 Instances:
 
 ### 5. JenkinsFile: Copy files from Jenkins to Ansible Control Node
 #### a. Save SSH Credentials in Jenkins under **Manage Jenkins -> Credentials -> System -> Global Credentials**
+#### b. Create Jenkins Pipeline
+
 
 
 ## Learning Outcomes
