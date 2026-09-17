@@ -31,6 +31,24 @@
 
 ## Steps
 
+### 1. Create a DigitalOcean Droplet for Ansible Control Node and install ansible
+Follow the documentation in docs.ansible.com to install ansible on the newly created Droplet
+
+### 2. Install boto3 and botocore packages on the Ansible Control Node
+This is required for Ansible to allow execute certain tasks on AWS EC2 instances
+```
+apt install python3-boto3
+apt install python3-botocore
+```
+### 3. Configure AWS Credentials with Ansible Control Node
+```
+  mkdir .aws
+  cd .aws
+  vim credentials
+```
+Enter and save the credentials for the AWS user in the credentials file.
+
+
 ## Learning Outcomes
 
 
