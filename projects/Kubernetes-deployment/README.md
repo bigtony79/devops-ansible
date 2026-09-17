@@ -101,7 +101,7 @@ You can use pip3 to install the above packages. For example, to install pyyaml i
   <INSERT OUTPUT>
   
 ### 6. Minor improvement of use of kubeconfig
-Instead of saving the kubeconfig entry in multiple tasks within the playbook, you can define it once and use it for all the tasks.
+Instead of saving the kubeconfig entry in multiple tasks within the playbook, you can define it once in command line and use it for all the tasks.
 ```
   export K8S_AUTH_KUBECONFIG=kubeconfig_myapp-eks-cluster
 ```
