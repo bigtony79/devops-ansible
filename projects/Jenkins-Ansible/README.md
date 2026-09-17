@@ -46,7 +46,29 @@ apt install python3-botocore
   cd .aws
   vim credentials
 ```
-Enter and save the credentials for the AWS user in the credentials file.
+Enter and save the credentials for the AWS user in the **credentials** file.
+
+### 4. Create 2 EC2 Instances to be managed by Ansible
+Create a terraform variables .tvars file and define the key value pairs
+```
+  vpc_cidr_block = 
+  subnet_cidr_block = 
+  avail_zone = 
+  env_prefix = 
+  my_ip = 
+  instance_type = 
+  public_key_location = 
+  image_name = 
+```
+Run terraform to create the 2 EC2 Instances:
+```
+  terraform init
+  terraform plan
+  terraform apply
+```
+
+### 5. JenkinsFile: Copy files from Jenkins to Ansible Control Node
+#### a. Save SSH Credentials in Jenkins under **Manage Jenkins -> Credentials -> System -> Global Credentials**
 
 
 ## Learning Outcomes
