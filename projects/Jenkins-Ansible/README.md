@@ -68,8 +68,16 @@ Run terraform to create the 2 EC2 Instances:
 ```
 
 ### 5. JenkinsFile: Copy files from Jenkins to Ansible Control Node
-#### a. Save SSH Credentials in Jenkins under **Manage Jenkins -> Credentials -> System -> Global Credentials**
-#### b. Create Jenkins Pipeline
+a. Save SSH Credentials in Jenkins under **Manage Jenkins -> Credentials -> System -> Global Credentials**
+Save Ansible and AWS Server credentials 
+<INSERT SCREENSHOTS>
+b. Create Jenkins Pipeline
+<INSERT SCREENSHOTS>
+c. Install sshagent plugin in Jenkins
+This will allow  you to securely pass SSH credentials stored in Jenkins into a pipeline, giving your steps (like shell scripts or Ansible playbooks) authenticated SSH access to remote servers without hardcoding private keys into your code or workspace.
+<INSERT SCREENSHOT>
+d. Install **SSH Pipeline Steps** plugin in Jenkins
+Enables us to execute command line commands on a remote server such as Ansible. In other words, it allows Jenkins to execute remote commands on Ansible server
 
 
 
