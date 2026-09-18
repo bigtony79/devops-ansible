@@ -7,8 +7,13 @@
       yum: 
         name: docker
         update_cache: yes # Update the package cache before installing
-        state: present  
-   
+        state: present  # Ensure Docker is installed
+    - name: Start and enable Docker service
+      service:
+        name: docker
+        state: started # Start the Docker service
+        enabled: yes # Enable Docker to start on boot
+
 - name: Download and Install Docker Compose
   hosts: all
   vars_files:
