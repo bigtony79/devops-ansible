@@ -28,7 +28,7 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: 'ansible-server-key', keyFileVariable: 'keyFile', usernameVariable: 'SSH_USER')]) {
                         remote.user = SSH_USER
                         remote.identityFile = keyFile
-                        sshCommand remote: remote, command: "ls -l /root" //Replace with your ansible server IP address
+                        sshCommand remote: remote, command: "ansible-playbook deploy_docker_tf_hosts.yaml" //Replace with your ansible server IP address
                     }
                     
                 }    
