@@ -51,14 +51,14 @@ Enter and save the credentials for the AWS user in the **credentials** file.
 ### 4. Create 2 EC2 Instances to be managed by Ansible
 Create a terraform variables .tvars file and define the key value pairs
 ```
-  vpc_cidr_block = 
-  subnet_cidr_block = 
-  avail_zone = 
-  env_prefix = 
-  my_ip = 
-  instance_type = 
-  public_key_location = 
-  image_name = 
+  vpc_cidr_block = <VPC_MAIN_CIDR_BLOCK>
+  subnet_cidr_block = <SUBNET_CIDR_BLOCK>
+  avail_zone = <AVAILABILITY_ZONE>
+  env_prefix = <ENVIRONMENT_PREFIX>
+  my_ip = <ANSIBLE_SERVER_IP_ADDRESS>
+  instance_type = <DESIRED_INSTANCE_TYPE>
+  public_key_location = <PUBLIC_KEY_LOCATION>
+  image_name = "al2023-ami-2023*"
 ```
 Run terraform to create the 2 EC2 Instances:
 ```
