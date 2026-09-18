@@ -37,6 +37,13 @@
     - name: Display docker-compose version
       debug: 
         msg: "Docker Compose version installed: {{ docker_compose_version.stdout }}"
+    
+    
+
+        
+        
+        
+      
 
 
 
