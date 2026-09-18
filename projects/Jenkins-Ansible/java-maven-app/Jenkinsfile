@@ -7,7 +7,7 @@ pipeline {
                 script {
                     echo "Copying files to ansible server"
                     sshagent(['ansible-server-key']) {
-                        sh "scp -o StrictHostKeyChecking=no ansible/* root@159.89.54.64:/root" //Replace with your ansible server IP address
+                        sh "scp -o StrictHostKeyChecking=no projects/Jenkins-Ansible/ansible/* root@159.89.54.64:/root" //Replace with your ansible server IP address
 
                         withCredentials([sshUserPrivateKey(credentialsId: 'ec2-server-key', keyFileVariable: 'keyFile', usernameVariable: 'SSH_USER')]) {
                             sh "scp ${keyFile} root@159.89.54.64:/root/ssh-key.pem" //Replace with your ansible server IP address
