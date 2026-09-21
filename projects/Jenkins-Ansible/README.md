@@ -79,6 +79,8 @@ Before starting this lab, ensure you have the following:
 Install the following Jenkins plugins:
  
 - SSH Agent Plugin - Jenkins uses the SSH Agent Plugin to securely inject SSH credentials into pipeline jobs
+  ![Alt Text](screenshots/install-SSH-Pipeline-Steps-plugin.png)
+
 - SSH Pipeline Steps Plugin - Allows Jenkins to execute commands on remote servers, enabling Jenkins to securely connect to an Ansible Control Node and run Ansible playbooks without exposing private keys in the pipeline code.
 - Git Plugin
 - Pipeline Plugin
