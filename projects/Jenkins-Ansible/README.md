@@ -167,7 +167,7 @@ b. Run the pipeline
 
 ![Alt Text](screenshots/pipeline-run-2.png)
 
-c. You can view the succesful run of Ansible playbook from the Console Output of the pipeline job
+### 3. Check the Console ouptut for details of the successful/failed run
 
 ```
 ....
@@ -246,13 +246,9 @@ ec2-54-84-104-33.compute-1.amazonaws.com : ok=9    changed=6    unreachable=0   
 Finished: SUCCESS
 ```
 
+### 4. Destroy the AWS Infrastructue
 
-
-
-
-
-
-
+Run ```terraform destroy``` to destroy all AWS infrastructure to avoid additional costs.
 
 ## Learning Outcomes
 
