@@ -97,13 +97,7 @@ Verify the installations:
  
 ```
   ansible --version
-```
-
-```
   python3 --version
-```
-
-```
   aws --version
 ```
  
@@ -113,11 +107,6 @@ Configure AWS credentials on the Ansible Control Node:
  
 ```bash
 mkdir -p ~/.aws
-```
- 
-Create the credentials file:
- 
-```bash
 vim ~/.aws/credentials
 ```
  
