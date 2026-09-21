@@ -170,73 +170,8 @@ b. Run the pipeline
 c. You can view the succesful run of Ansible playbook from the Console Output of the pipeline job
 
 ```
-  Started by user unknown or anonymous
-Obtained projects/Jenkins-Ansible/java-maven-app/Jenkinsfile from git https://github.com/bigtony79/devops-bootcamp-15-ansible.git
-[Pipeline] Start of Pipeline
-[Pipeline] node
-Running on Jenkins in /var/jenkins_home/workspace/ansible-pipeline
-[Pipeline] {
-[Pipeline] stage
-[Pipeline] { (Declarative: Checkout SCM)
-[Pipeline] checkout
-Selected Git installation does not exist. Using Default
-The recommended git tool is: NONE
-using credential GitHub-PAT
- > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/ansible-pipeline/.git # timeout=10
-Fetching changes from the remote Git repository
- > git config remote.origin.url https://github.com/bigtony79/devops-bootcamp-15-ansible.git # timeout=10
-Fetching upstream changes from https://github.com/bigtony79/devops-bootcamp-15-ansible.git
- > git --version # timeout=10
- > git --version # 'git version 2.47.3'
-using GIT_ASKPASS to set credentials 
- > git fetch --tags --force --progress -- https://github.com/bigtony79/devops-bootcamp-15-ansible.git +refs/heads/*:refs/remotes/origin/* # timeout=10
- > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
-Checking out Revision d8b4ad0accaf708c5b6c6ae4b3c28b3800c960e5 (refs/remotes/origin/main)
- > git config core.sparsecheckout # timeout=10
- > git checkout -f d8b4ad0accaf708c5b6c6ae4b3c28b3800c960e5 # timeout=10
-Commit message: "removed steps"
- > git rev-list --no-walk ca6c35d4997d8f82e389a291201a15cb8af821f4 # timeout=10
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] withEnv
-[Pipeline] {
-[Pipeline] withEnv
-[Pipeline] {
-[Pipeline] stage
-[Pipeline] { (Copy files to ansible server)
-[Pipeline] script
-[Pipeline] {
-[Pipeline] echo
-Copying files to ansible server
-[Pipeline] sshagent
-[ssh-agent] Using credentials root
-$ ssh-agent
-SSH_AUTH_SOCK=/tmp/ssh-YwnAFPPIflYo/agent.454
-SSH_AGENT_PID=458
-Running ssh-add (command line suppressed)
-[ssh-agent] Started.
-[Pipeline] {
-[Pipeline] sh
-+ scp -o StrictHostKeyChecking=no projects/Jenkins-Ansible/ansible/ansible.cfg projects/Jenkins-Ansible/ansible/deploy_docker_tf_hosts.yaml projects/Jenkins-Ansible/ansible/inventory_aws_ec2.yaml projects/Jenkins-Ansible/ansible/vars-file.yaml root@159.89.54.64:/root
-[Pipeline] withCredentials
-Masking supported pattern matches of $keyFile
-[Pipeline] {
-[Pipeline] sh
-+ scp **** root@159.89.54.64:/root/ssh-key.pem
-[Pipeline] }
-[Pipeline] // withCredentials
-[Pipeline] }
-$ ssh-agent -k
-unset SSH_AUTH_SOCK;
-unset SSH_AGENT_PID;
-echo Agent pid 458 killed;
-[ssh-agent] Stopped.
-[Pipeline] // sshagent
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
+....
+
 [Pipeline] { (Execute Ansible Playbook)
 [Pipeline] script
 [Pipeline] {
@@ -306,19 +241,8 @@ PLAY RECAP *********************************************************************
 ec2-18-207-174-156.compute-1.amazonaws.com : ok=9    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ec2-54-84-104-33.compute-1.amazonaws.com : ok=9    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-[Pipeline] }
-[Pipeline] // withCredentials
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // node
-[Pipeline] End of Pipeline
+....
+
 Finished: SUCCESS
 ```
 
