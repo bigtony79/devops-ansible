@@ -34,21 +34,21 @@ The objective is to build an end-to-end automation workflow where infrastructure
  
 ```text
 +------------+
-| Jenkins |
+| Jenkins    |
 +------+-----+
-|
-| SSH
-v
+       |
+       | SSH
+       v
 +--------------+
-| Ansible |
+| Ansible      |
 | Control Node |
 +------+-------+
-|
-| Ansible
-|
-+----+----+
-| |
-v v
+      |
+      | Ansible
+      |
+ +----+----+
+ |         |
+ v         v
 +------+ +------+
 | EC2 | | EC2 |
 |Node1 | |Node2 |
