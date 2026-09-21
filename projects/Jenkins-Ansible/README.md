@@ -55,6 +55,12 @@ The objective is to build an end-to-end automation workflow where infrastructure
 +------+ +------+
 ```
 
+Workflow:
+* Jenkins checks out code from Git.
+* Jenkins copies playbooks and credentials to the Ansible Control Node.
+* Jenkins remotely executes the Ansible playbook.
+* Ansible connects to and configures the EC2 instances.
+
 ## Prerequisites
 Before starting this lab, ensure you have the following:
  
