@@ -2,6 +2,10 @@
 
 ## Overview
 
+This project demonstrates how to integrate Jenkins and Ansible to automate server configuration as part of a CI/CD pipeline. Jenkins acts as the orchestration platform and remotely executes Ansible playbooks on a dedicated Ansible Control Node, which in turn manages multiple AWS EC2 instances. 
+
+The objective is to build an end-to-end automation workflow where infrastructure and configuration tasks can be executed directly from a Jenkins pipeline. The pipeline securely transfers playbooks, configuration files, and SSH credentials to the Ansible Control Node, installs required dependencies, and executes Ansible playbooks that configure and manage target EC2 instances.
+
 ## Technologies used
 * Ansible
 * Jenkins
@@ -15,7 +19,6 @@
 * Git
 
 ## Project Description
-* Create and configure a dedicated server for Jenkins
 * Create and configure a dedicated server for Ansible Control Node
 * Write Ansible Playbook, which configures 2 EC2 Instances
 * Add ssh key file credentials in Jenkins for Ansible Control Node server and Ansible Managed Node servers
@@ -86,5 +89,13 @@ Enables us to execute command line commands on a remote server such as Ansible. 
 
 
 ## Learning Outcomes
+
+- Integrate Ansible into Jenkins pipelines 
+- Configure a dedicated Ansible Control Node 
+- Manage AWS EC2 instances with Ansible 
+- Securely store and use SSH credentials in Jenkins 
+- Execute remote commands through Jenkins 
+- Automate server configuration as part of a CI/CD workflow 
+- Build scalable infrastructure automation solutions
 
 
