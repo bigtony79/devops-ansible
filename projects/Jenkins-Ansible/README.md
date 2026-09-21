@@ -47,8 +47,8 @@ Before starting this lab, ensure you have the following:
 
 Install the following Jenkins plugins:
  
-- SSH Agent Plugin
-- SSH Pipeline Steps Plugin
+- SSH Agent Plugin - Jenkins uses the SSH Agent Plugin to securely inject SSH credentials into pipeline jobs
+- SSH Pipeline Steps Plugin - Allows Jenkins to execute commands on remote servers, enabling Jenkins to securely connect to an Ansible Control Node and run Ansible playbooks without exposing private keys in the pipeline code.
 - Git Plugin
 - Pipeline Plugin
  
@@ -111,24 +111,7 @@ and create the appropriate credential entries before executing the pipeline.
 
 ## Steps
 
-### 1. Create a DigitalOcean Droplet for Ansible Control Node and install ansible
-Follow the documentation in docs.ansible.com to install ansible on the newly created Droplet
-
-### 2. Install boto3 and botocore packages on the Ansible Control Node
-This is required for Ansible to allow execute certain tasks on AWS EC2 instances
-```
-apt install python3-boto3
-apt install python3-botocore
-```
-### 3. Configure AWS Credentials with Ansible Control Node
-```
-  mkdir .aws
-  cd .aws
-  vim credentials
-```
-Enter and save the credentials for the AWS user in the **credentials** file.
-
-### 4. Create 2 EC2 Instances to be managed by Ansible
+### 1. Create 2 EC2 Instances to be managed by Ansible
 Create a terraform variables .tvars file and define the key value pairs
 ```
   vpc_cidr_block = <VPC_MAIN_CIDR_BLOCK>
@@ -147,13 +130,8 @@ Run terraform to create the 2 EC2 Instances:
   terraform apply
 ```
 
-### 5. JenkinsFile: Copy files from Jenkins to Ansible Control Node
-a. Save SSH Credentials in Jenkins under **Manage Jenkins -> Credentials -> System -> Global Credentials**
-
-Save Ansible and AWS Server credentials 
-<INSERT SCREENSHOTS>
-
-b. Create Jenkins Pipeline
+### 2. JenkinsFile: Copy files from Jenkins to Ansible Control Node
+a. Create Jenkins Pipeline
 <INSERT SCREENSHOTS>
 
 c. Install sshagent plugin in Jenkins
