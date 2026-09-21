@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        ANSIBLE_SERVER = "159.89.54.64" //Replace with your ansible server IP address
+        ANSIBLE_SERVER = <ANSIBLE_SERVER_IP> //Replace with your ansible server IP address
     }
     stages {
         stage('Copy files to ansible server') {
