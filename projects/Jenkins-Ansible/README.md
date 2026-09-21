@@ -146,6 +146,8 @@ b. Run the pipeline
 
 ![Alt Text](screenshots/pipeline-run-2.png)
 
+c. You can view the succesful run of Ansible playbook from the Console Output of the pipeline job
+
 ```
   Started by user unknown or anonymous
 Obtained projects/Jenkins-Ansible/java-maven-app/Jenkinsfile from git https://github.com/bigtony79/devops-bootcamp-15-ansible.git
