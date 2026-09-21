@@ -64,16 +64,16 @@ The Ansible Control Node should have the following software installed:
  
 Verify the installations:
  
-```bash
-ansible --version
+```
+  ansible --version
 ``` 
 
-```bash
-python3 --version
+```
+  python3 --version
 ``` 
 
-```bash
-aws --version
+```
+  aws --version
 ```
  
 ### AWS Credentials Configuration
