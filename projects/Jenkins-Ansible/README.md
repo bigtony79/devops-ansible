@@ -100,6 +100,7 @@ Verify the installations:
   python3 --version
   aws --version
 ``` 
+
 ### AWS Credentials Configuration
  
 Configure AWS credentials on the Ansible Control Node:
