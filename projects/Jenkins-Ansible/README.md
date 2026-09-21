@@ -43,6 +43,71 @@ Before starting this lab, ensure you have the following:
 - Git repository containing the Ansible playbooks and Jenkinsfile
 - Basic familiarity with Jenkins Pipelines and Ansible
 
+### Jenkins Requirements
+
+Install the following Jenkins plugins:
+ 
+- SSH Agent Plugin
+- SSH Pipeline Steps Plugin
+- Git Plugin
+- Pipeline Plugin
+ 
+### Ansible Control Node Requirements
+ 
+The Ansible Control Node should have the following software installed:
+ 
+- Ansible
+- Python 3
+- boto3
+- botocore
+- AWS CLI
+ 
+Verify the installations:
+ 
+```bash
+ansible --version
+```
+ 
+```bash
+python3 --version
+```
+ 
+```bash
+aws --version
+```
+ 
+### AWS Credentials Configuration
+ 
+Configure AWS credentials on the Ansible Control Node:
+ 
+```bash
+mkdir -p ~/.aws
+```
+ 
+Create the credentials file:
+ 
+```bash
+vim ~/.aws/credentials
+```
+ 
+Add the AWS access key and secret key for a user with permissions to manage EC2 resources.
+ 
+### Jenkins Credentials Configuration
+ 
+Store the following credentials in Jenkins:
+ 
+- SSH private key for Ansible Control Node access
+- SSH private key for EC2 Managed Nodes access
+- Any AWS credentials required by the pipeline
+ 
+Navigate to:
+ 
+```text
+Manage Jenkins → Credentials → System → Global Credentials
+```
+ 
+and create the appropriate credential entries before executing the pipeline.
+
 
 ## Steps
 
