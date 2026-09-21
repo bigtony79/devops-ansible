@@ -60,8 +60,8 @@ The Ansible Control Node should have the following software installed:
 - Python 3
 - boto3
 - botocore
-- AWS CLI 
- 
+- AWS CLI
+
 Verify the installations:
  
 ```
