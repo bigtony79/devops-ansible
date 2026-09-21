@@ -31,6 +31,18 @@ The objective is to build an end-to-end automation workflow where infrastructure
   - With everything installed and copied to the remote Ansible Control Node server, execute the playbook remotely on that Control Node that will configure the 2 EC2 Managed Nodes
 
 ## Prerequisites
+Before starting this lab, ensure you have the following:
+ 
+- Jenkins installed and operational
+- DigitalOcean account
+- AWS account with permissions to create and manage EC2 resources
+- Terraform installed
+- SSH key pairs for:
+  - Jenkins → Ansible Control Node access
+  - Ansible Control Node → EC2 Managed Nodes access
+- Git repository containing the Ansible playbooks and Jenkinsfile
+- Basic familiarity with Jenkins Pipelines and Ansible
+
 
 ## Steps
 
