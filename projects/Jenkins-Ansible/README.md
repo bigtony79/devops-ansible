@@ -30,6 +30,31 @@ The objective is to build an end-to-end automation workflow where infrastructure
   - Install Ansible, Python3 and Boto3 on the Ansible Control Node server
   - With everything installed and copied to the remote Ansible Control Node server, execute the playbook remotely on that Control Node that will configure the 2 EC2 Managed Nodes
 
+## Architecture
+ 
+```text
++------------+
+| Jenkins |
++------+-----+
+|
+| SSH
+v
++--------------+
+| Ansible |
+| Control Node |
++------+-------+
+|
+| Ansible
+|
++----+----+
+| |
+v v
++------+ +------+
+| EC2 | | EC2 |
+|Node1 | |Node2 |
++------+ +------+
+```
+
 ## Prerequisites
 Before starting this lab, ensure you have the following:
  
