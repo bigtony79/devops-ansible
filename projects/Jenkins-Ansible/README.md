@@ -133,7 +133,19 @@ Run terraform to create the 2 EC2 Instances:
 
 ### 2. JenkinsFile: Copy files from Jenkins to Ansible Control Node
 a. Create Jenkins Pipeline - We will set the script path to **projects/Jenkins/java-maven-app/Jenkinsfile**
+
+![Alt Text](screenshots/pipeline-creation-1.png)
+
+![Alt Text](screenshots/pipeline-creation-2.png)
+
+![Alt Text](screenshots/pipeline-creation-3.png)
+
 b. Run the pipeline
+
+![Alt Text](screenshots/pipeline-run-1.png)
+
+![Alt Text](screenshots/pipeline-run-2.png)
+
 ```
   Started by user unknown or anonymous
 Obtained projects/Jenkins-Ansible/java-maven-app/Jenkinsfile from git https://github.com/bigtony79/devops-bootcamp-15-ansible.git
