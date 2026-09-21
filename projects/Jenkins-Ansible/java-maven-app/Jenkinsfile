@@ -9,7 +9,7 @@ pipeline {
                 
                 script {
                     echo "Copying files to ansible server"
-                    sshagent(['ansible-server-key']) {
+                    sshagent(['ansible-server-key']) { //sshagent is used to provide SSH credentials for the scp command
                         sh "scp -o StrictHostKeyChecking=no projects/Jenkins-Ansible/ansible/* root@${ANSIBLE_SERVER}:/root" 
 
                         withCredentials([sshUserPrivateKey(credentialsId: 'ec2-server-key', keyFileVariable: 'keyFile', usernameVariable: 'SSH_USER')]) {
