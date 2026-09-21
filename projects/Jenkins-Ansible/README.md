@@ -67,9 +67,11 @@ Verify the installations:
 ```bash
 ansible --version
 ``` 
+
 ```bash
 python3 --version
 ``` 
+
 ```bash
 aws --version
 ```
